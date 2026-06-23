@@ -4,7 +4,7 @@ Pitch deck de inversión autocontenido (un solo `index.html`, sin build ni depen
 Versión condensada para presentar en ~5 minutos. Hermano del *deck maestro* (file de
 entendimiento avanzado) — este es el **pitch para jurado / inversionista**.
 
-**Live:** https://apalpan.github.io/aecode-pitch-deck/
+**Live:** https://apalpan.github.io/aecode-pitch-5min/
 
 ## Modo guion (notas del orador)
 
