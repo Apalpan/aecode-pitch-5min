@@ -367,11 +367,15 @@ S("light","Roadmap","timeline",f"""
 
 # 18 ESCALABILIDAD
 S("light","Escalabilidad","chart",f"""
-  {title('Mismo conocimiento. Más usuarios. <span class="grad">Menor costo marginal.</span>')}
-  {stackbar([("2024",[30,0,0],"100% Live"),("2026E",[132,55,33],"40% escalable"),("2027 Target",[160,140,120],"62% escalable")],
-            [("B2C Live","#4465EE"),("B2B","#17B14E"),("On-demand AI","#6D70F9")], 420)}
+  {title('De vender programas en vivo a <span class="grad">escalar conocimiento validado</span>.')}
+  {stackbar([("2024 · 0%",[30,0,0],"US$30K"),("2025 · 11%",[107,8,5],"US$120K"),("2026E · 40%",[132,55,33],"US$220K"),("2027 Target · 62%",[160,140,120],"US$420K")],
+            [("B2C Live","#4465EE"),("B2B","#F2B33D"),("On-demand AI","#17B14E")], 420)}
+  <div class="scale-foot reveal">
+    <div class="margin-pill"><span>Margen ponderado</span><b>35%<i>→</i>47.1%</b></div>
+    <div class="scale-note">El cambio de mix —menos B2C Live, más B2B + On-demand AI— mejora <b>margen, recurrencia y escalabilidad</b>.</div>
+  </div>
 """,
-"La clave es cambiar el mix. Hoy Live valida y genera caja. Pero cada programa validado se convierte en cápsulas, rutas prácticas y activos digitales reutilizables. Así crece el margen, la recurrencia y la capacidad de escalar sin depender solo de horas humanas.")
+"AECODE pasó de 30 mil dólares en 2024 a 120 mil en 2025, creciendo cuatro veces. Para 2026 proyectamos 220 mil, pero lo más importante no es solo crecer: es mejorar el mix. En 2024 éramos 100% B2C Live. En 2026, B2B y On-demand AI ya representan el 40% del revenue. Con inversión, apuntamos a 420 mil dólares en 2027, con casi el 62% del revenue viniendo de líneas más escalables y de mayor margen. Además, el margen ponderado de contribución sube de 35% a 47.1%, gracias a menos dependencia de B2C Live y mayor peso de B2B y On-demand AI.")
 
 # 19 EQUIPO
 S("dark","Equipo","team",f"""
@@ -606,6 +610,13 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .sb-tot{font-weight:800;font-size:16px;color:var(--fg)} .sb-lab{font-size:13px;font-weight:700;color:var(--muted)}
 .sb-legend{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
 .sb-leg{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--muted);font-weight:600} .sb-leg i{width:13px;height:13px;border-radius:4px}
+/* escalabilidad foot */
+.scale-foot{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:2px}
+.margin-pill{display:flex;flex-direction:column;gap:1px;padding:12px 22px;border-radius:14px;background:var(--card);border:1px solid var(--card-line);border-left:4px solid var(--accent3)}
+.margin-pill span{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.margin-pill b{font-size:26px;font-weight:800;color:var(--fg);font-variant-numeric:tabular-nums;display:flex;align-items:center}
+.margin-pill i{color:var(--accent3);font-style:normal;font-weight:800;margin:0 8px}
+.scale-note{font-size:15px;color:var(--muted);line-height:1.45;max-width:44ch;flex:1;min-width:240px} .scale-note b{color:var(--fg);font-weight:700}
 /* tss */
 .tss{display:flex;gap:30px;align-items:center}
 .tss-rings{position:relative;width:236px;height:236px;flex:none}
