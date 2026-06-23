@@ -1,4 +1,4 @@
-# AECODE — Pitch Deck 5 minutos · 21 slides
+# AECODE — Pitch Deck 5 minutos · 20 slides
 
 Pitch deck de inversión autocontenido (un solo `index.html`, sin build ni dependencias).
 Versión condensada para presentar en ~5 minutos. Hermano del *deck maestro* (file de
@@ -33,8 +33,12 @@ Todo el contenido (texto + guion) vive en la lista `SLIDES` de `build_pitch.py`
 python build_pitch.py
 ```
 
-## Estructura (21 slides)
+## Estructura (20 slides · minimalista para pitch presencial)
 
-Hook · Oportunidad · Cambio inevitable · Problema · Costo real · Solución · Producto · Demo ·
-IA · Mercado · B2B2C · Modelo · Tracción · Revenue mix · Growth · Métrica norte · Diferenciación ·
-Roadmap · Equipo · Ask · Cierre.
+Hook · Oportunidad · Por qué ahora · Problema central · Dolor específico · Solución ·
+Producto/Video Demo · Innovación tecnológica · Mercado · Modelo B2C2B · Modelo de negocio ·
+Tracción · Go To Market · NSM · Diferenciación · Crecimiento Roadmap · Escalabilidad ·
+Equipo · Ask · Cierre.
+
+Cada slide queda con titular + un elemento visual; el detalle vive en el **guion** (tecla `N`).
+Cada slide está etiquetado con su sección (barra inferior y barra de capítulos superior).
