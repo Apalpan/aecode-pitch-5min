@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-AECODE — Pitch Deck Premium · 5 minutos · 20 slides
-Minimalista, elegante, gráficas interactivas (mapa LATAM, motor IA, 2x2 competitivo, donut SVG,
-barras/apiladas con tooltips, bloques de pricing). Sin rótulos de sección.
-Design system OFICIAL AECODE (Manrope · navy #0E1121 · violeta #4A3AC1 · verde #17B14E · azul #4465EE · rojo dolor).
+AECODE — Pitch Deck Final Premium · 5 minutos · 21 slides
+Minimalista, elegante, gráficas interactivas (mapa LATAM, motor IA, 2x2, donut SVG, barras/apiladas, pricing, QR).
+Sin rótulos de sección. Design system OFICIAL AECODE (Manrope · navy #0E1121 · violeta · verde · azul · rojo dolor).
 Light+dark combinado · logos reales · responsive · MODO GUION (tecla N).
 Ejecutar:  python build_pitch.py
 """
 import html, math, datetime, pathlib
+
+QR_URL="https://apalpan.github.io/aecode-pitch-5min/"   # destino del QR del cierre (editable)
 
 def esc(s): return html.escape(str(s))
 def _a(s): return html.escape(str(s), quote=True)
@@ -122,11 +123,6 @@ def member(name, role, tone="violet"):
     return (f'<div class="mem reveal mem-{tone}"><div class="mem-av">{ini}</div>'
             f'<div class="mem-n">{esc(name)}</div><div class="mem-r">{esc(role)}</div></div>')
 
-def demoframe(inner):
-    return (f'<div class="demo-frame reveal"><div class="demo-bar"><span></span><span></span><span></span>'
-            f'<span class="demo-url">app.aecode.io / mi-ruta</span></div>'
-            f'<div class="demo-body">{inner}</div></div>')
-
 # ---------- slides ----------
 SLIDES=[]
 def S(theme, chapter, layout, content, notes=""):
@@ -140,41 +136,39 @@ S("dark","Hook","statement",f"""
   {title('La tecnología avanza <span class="grad">más rápido</span> que nuestra capacidad de adoptarla.')}
   {eqs([("Herramientas","≠","adopción","neq"),("Aprender","≠","aplicar","neq"),("Adopción","=","productividad","eq")])}
 """,
-"La tecnología avanza más rápido que la capacidad de las personas para adoptarla. Una cosa es conocer una herramienta. Otra es adoptarla en el trabajo real. Y en construcción, esa diferencia impacta directamente en productividad. AECODE nace para cerrar esa brecha.")
+"La tecnología avanza más rápido que la capacidad de las personas para adoptarla. Una cosa es conocer una herramienta. Otra cosa es adoptarla en el trabajo real. Y en construcción, esa diferencia impacta directamente en productividad. AECODE nace para cerrar esa brecha.")
 
 # 02 OPORTUNIDAD
 S("dark","Oportunidad","statement",f"""
   {title('El sector que <span class="grad">mueve el mundo</span> — y necesita reaprender')}
-  <div class="statrow statrow-2 bare">
-    {stat("280","Personas trabajan en construcción","", suffix="M+")}
-    {stat("44","De las habilidades cambian en 5 años","", suffix="%", tone="blue")}
+  <div class="statrow statrow-3 bare">
+    {stat("280","Personas en construcción","", suffix="M+")}
+    {stat("92","Proyectos con sobrecostos o retrasos","", suffix="%", tone="danger")}
+    {stat("44","Habilidades cambian en 5 años","", suffix="%", tone="blue")}
   </div>
 """,
-"La construcción no se detiene. Se seguirán construyendo viviendas, hospitales, carreteras, puentes e infraestructura. Más de 280 millones de personas trabajan en construcción en el mundo. Pero las habilidades están cambiando rápido. La oportunidad está en formar talento capaz de aprender, aplicar y adaptarse a la velocidad que el sector exige.")
+"La construcción no se detiene. Se seguirán construyendo viviendas, hospitales, carreteras, puentes e infraestructura. Más de 280 millones de personas trabajan en construcción en el mundo, pero este sector sigue enfrentando retrasos, sobrecostos y baja productividad. Además, las habilidades están cambiando rápido. La oportunidad está en formar talento capaz de aprender, aplicar y adaptarse a la velocidad que el sector exige.")
 
-# 03 POR QUÉ AHORA — LATAM
+# 03 POR QUÉ AHORA — LATAM + estándar mundial
 S("dark","Por qué ahora","split-latam",f"""
   <div class="split-latam">
    <div class="sl-left">
      {quote('Adoptar tecnología <span class="grad">ya no es opcional</span>.')}
-     {lead('Latinoamérica ya impulsa <b>BIM</b> e <b>IA</b> en construcción.')}
-     {chiprow(["Digitalización BIM","Automatización","Productividad","IA"])}
+     <div class="std-banner reveal"><span class="std-k">BIM ya es estándar mundial</span> — exigido en obra pública en <b>+30 países</b> bajo la norma <b>ISO 19650</b>. Latinoamérica ya se mueve.</div>
+     {chiprow(["Digitalización BIM","Automatización","IA aplicada","Productividad"])}
    </div>
-   <div class="sl-right">{latam([("México","Programas BIM · IA"),("Colombia","Programas BIM · IA"),("Costa Rica","Transformación digital"),("Perú","Programas BIM · IA"),("Brasil","Transformación digital"),("Chile","Programas BIM · IA"),("Uruguay","Programas BIM"),("Argentina","Programas BIM · IA")])}</div>
+   <div class="sl-right">{latam([("México","Programas BIM · IA"),("Colombia","Programas BIM · IA"),("Costa Rica","Transformación digital"),("Perú","Programas BIM · IA"),("Brasil","Transformación digital"),("Chile","BIM obligatorio"),("Uruguay","Programas BIM"),("Argentina","Programas BIM · IA")])}</div>
   </div>
 """,
-"La construcción está entrando a una nueva etapa digital. Digitalización BIM, automatización, IA y herramientas digitales ya no son una ventaja futura: empiezan a ser condición para competir. Y Latinoamérica ya se está moviendo: México, Colombia, Perú, Brasil, Chile y más impulsan BIM e IA en sus proyectos. El reto no es solo tener herramientas, es que las personas sepan usarlas.")
+"Adoptar tecnología ya no es opcional. El mundo ya puso el estándar: más de 30 países exigen BIM en obra pública bajo la norma ISO 19650, y Latinoamérica ya se está moviendo: México, Colombia, Perú, Brasil y Chile impulsan BIM e IA. La digitalización BIM, la automatización y la IA dejaron de ser una ventaja futura: son condición para competir. El reto es que las personas sepan usarlas para coordinar mejor, ahorrar tiempo y reducir errores.")
 
 # 04 PROBLEMA CENTRAL — RED
 S("light","Problema central","statement",f"""
-  {title('No falta contenido.<br>Falta <span class="red">aplicarlo</span>.')}
-  <div class="statrow statrow-2 bare">
-    {stat("92","De proyectos terminan con sobrecostos o retrasos","el costo de no adoptar tecnología", suffix="%", tone="danger")}
-    {stat("0","Rutas claras para pasar de aprender a aplicar","aprendizaje fragmentado", tone="danger")}
-  </div>
-  {chiprow(["Cursos infinitos","Poca claridad","Poca práctica","Baja adopción"])}
+  {title('No falta contenido.<br>Falta una <span class="red">ruta clara</span> para aplicar.')}
+  {chiprow(["Cursos infinitos","Poca claridad","Poca práctica","Baja adopción tecnológica"])}
+  {lead('El profesional no sabe qué aprender primero ni cómo aplicarlo. La empresa capacita, pero <b>no logra adoptar</b> lo necesario para mejorar productividad y rentabilidad.')}
 """,
-"Hoy no faltan cursos, tutoriales, webinars, comunidades ni respuestas con IA. El problema es que el aprendizaje está fragmentado. El profesional no siempre sabe qué aprender primero, qué le sirve realmente para crecer o cómo aplicarlo en su trabajo. Y la empresa capacita, pero no siempre logra que esa capacitación cambie la forma de trabajar. El costo se ve en los proyectos: 92% terminan con sobrecostos o retrasos.")
+"Hoy no faltan cursos, tutoriales, webinars, comunidades ni respuestas con IA. El problema es que el aprendizaje está fragmentado. El profesional no siempre sabe qué aprender primero, qué le sirve realmente para crecer o cómo aplicarlo en su trabajo. Y la empresa invierte y capacita, pero no siempre logra adoptar lo necesario para mejorar productividad y rentabilidad.")
 
 # 05 DOLOR REAL — RED
 S("light","Dolor real","cards",f"""
@@ -186,16 +180,16 @@ S("light","Dolor real","cards",f"""
   ],3)}
   {chip("No es un problema educativo: es un problema de productividad")}
 """,
-"El dolor se ve en tres niveles. Para el profesional: invierte tiempo y dinero, pero no siempre mejora su trabajo, salario o empleabilidad. Para la empresa: invierte en capacitación y tecnología, pero no siempre cambia el comportamiento del equipo. Y para el proyecto: esa brecha se convierte en errores, retrabajo, baja coordinación y pérdida de productividad.")
+"El dolor se ve en tres niveles. El profesional invierte tiempo y dinero, pero no siempre mejora su trabajo ni logra demostrar lo que sabe hacer. La empresa capacita, pero no logra adopción real ni cambios concretos en la forma de trabajar. Y en el proyecto, esa brecha se convierte en errores, retrabajo, baja coordinación y pérdida de productividad.")
 
 # 06 SOLUCIÓN — MARCA AECODE
 S("dark","Solución","brand",f"""
   {LOGO_BIG}
   {title('Acelera la <span class="grad">adopción tecnológica</span> en construcción.')}
   {flow([("Aprende tecnología",""),("Aplícala en proyectos reales","hot"),("Construye mejor","win")])}
-  {lead('No vendemos solo cursos. Convertimos aprendizaje en <b>adopción tecnológica y productividad</b> para profesionales, empresas y proyectos.')}
+  {lead('No vendemos solo cursos. Convertimos el aprendizaje en <b>adopción tecnológica y mejora de productividad</b>.')}
 """,
-"AECODE es una plataforma de aprendizaje para arquitectura, ingeniería y construcción. Ayudamos a profesionales y empresas a aprender y aplicar digitalización BIM, automatización, IA y herramientas digitales en el trabajo real. No vendemos solo cursos. Convertimos aprendizaje en adopción tecnológica y productividad.")
+"AECODE es una plataforma de aprendizaje para arquitectura, ingeniería y construcción. Ayudamos a profesionales y empresas a aprender y aplicar digitalización BIM, automatización, IA y herramientas digitales en el trabajo real. Convertimos el aprendizaje en adopción tecnológica y mejora de productividad.")
 
 # 07 PRODUCTO / DEMO
 S("light","Producto / Video Demo","demo",f"""
@@ -208,40 +202,43 @@ S("light","Producto / Video Demo","demo",f"""
        <div class="ps"><span>3</span> Demuestra</div>
      </div>
    </div>
-   <div class="prod-r">{demoframe('<div class="mock"><div class="mock-orb"></div><div class="mock-play">▶</div><div class="mock-h">Tu ruta está lista</div><div class="mock-s">Inteligencia artificial aplicada al sector AEC</div><div class="mock-meta">3 módulos · 24 skills · evidencia real</div></div>')}</div>
+   <div class="prod-r">
+     <div class="demo-frame reveal"><div class="demo-bar"><span></span><span></span><span></span><span class="demo-url">app.aecode.io / mi-ruta</span></div>
+       <div class="demo-body"><div class="mock"><div class="mock-orb"></div><div class="mock-play">▶</div><div class="mock-h">Tu ruta está lista</div><div class="mock-s">Inteligencia artificial aplicada al sector AEC</div><div class="mock-meta">3 módulos · 24 skills · evidencia real</div></div></div></div>
+   </div>
   </div>
 """,
-"El usuario identifica su nivel, elige un rol o especialidad y avanza por una ruta práctica. Puede aprender BIM, planificación, costos, coordinación, gestión de obra, automatización o IA aplicada. Aprende con cápsulas cortas, practica con casos reales y genera evidencia de avance. Así pasamos de aprendizaje disperso a progreso guiado.")
+"El usuario identifica su nivel, elige un rol o especialidad y avanza por una ruta práctica. Puede aprender BIM, planificación, costos, coordinación, gestión de obra, automatización o IA aplicada. Aprende con cápsulas cortas de microlearning, practica con casos reales y genera evidencia de avance. Así pasamos de aprendizaje disperso a progreso guiado.")
 
-# 08 INNOVACIÓN — MOTOR IA
+# 08 INNOVACIÓN — MOTOR IA (sin fórmula, completo)
 S("dark","Innovación tecnológica","engine",f"""
-  {title('Motor de <span class="grad">IA adaptativa</span>', "eng-title")}
-  {lead('Se entrena con el criterio de <b>+200 expertos AEC</b>.')}
+  {title('Motor de <span class="grad">IA adaptativa</span> para construcción', "eng-title")}
+  {lead('Alimentado por contenido validado y el criterio de <b>+200 expertos AEC</b>.')}
   <div class="engine reveal">
     <div class="eng-col">
-      <div class="eng-h">INPUT</div>
+      <div class="eng-h">ENTRA</div>
       <div class="eng-item">◍ +200 expertos AEC</div>
       <div class="eng-item">▣ Contenido validado</div>
       <div class="eng-item">⬡ Comunidad · datos</div>
     </div>
     <div class="eng-core">
-      <div class="eng-ring"><div class="eng-formula">s* = argmax<br>[α·preparación<br>+ β·relevancia<br>− γ·solape]</div></div>
-      <div class="eng-cap">Recomendador · decide qué aprender ahora</div>
+      <div class="eng-ring"><div class="eng-core-in"><b>IA</b><span>adaptativa</span></div></div>
+      <div class="eng-cap">Entiende tu contexto y decide qué aprender ahora</div>
     </div>
     <div class="eng-col eng-out">
-      <div class="eng-h">RESULTADO</div>
+      <div class="eng-h">SALE</div>
       <div class="eng-item">✓ Ruta personalizada por rol</div>
       <div class="eng-item">✓ Skill verificada con evidencia</div>
       <div class="eng-item">✓ Progreso demostrable</div>
     </div>
   </div>
   <div class="eng-methods reveal">
-    <div class="em" data-tip="IRT · ubica tu nivel real"><b>IRT</b> · Diagnóstico</div>
-    <div class="em" data-tip="Knowledge Tracing · se ajusta con cada evidencia"><b>Knowledge Tracing</b> · Aprendizaje</div>
-    <div class="em" data-tip="Clasificador · valida tu evidencia"><b>Clasificador</b> · Verificación</div>
+    <div class="em" data-tip="Ubica tu nivel real y tu objetivo"><b>Diagnóstico adaptativo</b><small>ubica tu nivel y tu meta</small></div>
+    <div class="em" data-tip="Tu ruta se ajusta a tu rol y avance"><b>Rutas personalizadas</b><small>se ajustan a ti</small></div>
+    <div class="em" data-tip="Agentes que estructuran el conocimiento técnico AEC"><b>Sistema multiagente</b><small>estructura el saber AEC</small></div>
   </div>
 """,
-"Nuestra innovación no es poner un chatbot encima de una plataforma. Estamos construyendo un motor de IA adaptativa alimentado por contenido validado y criterio de más de 200 expertos del sector. El sistema diagnostica con modelos tipo IRT, aprende de cada evidencia con knowledge tracing, recomienda la ruta óptima y verifica la evidencia con un clasificador. Entra: expertos, contenido y datos. Sale: ruta personalizada, skill verificada y progreso demostrable.")
+"Nuestra innovación es un motor de IA adaptativa alimentado por contenido validado y por el criterio de más de 200 expertos del sector. El sistema diagnostica, recomienda rutas, entiende la necesidad del usuario, interpreta el contexto y lo guía hacia habilidades aplicables. Además, estamos desarrollando un sistema multiagente para estructurar el conocimiento técnico y facilitar la adopción tecnológica del profesional, alineada a las necesidades reales de la industria. Entra: expertos, contenido y datos. Sale: ruta personalizada, skill verificada y progreso demostrable.")
 
 # 09 MERCADO
 S("light","Mercado","tss",f"""
@@ -251,63 +248,94 @@ S("light","Mercado","tss",f"""
    <div class="split-r">{lead('Apuntamos a <b>US$2.5M en 3 años</b> — menos del <b>3%</b> del mercado servible. No necesitamos dominar el mercado: basta capturar una porción de una vertical con alto dolor.')}</div>
   </div>
 """,
-"Nuestro mercado inicial es formación digital especializada para construcción en Latinoamérica. Estimamos un TAM de 360 millones de dólares, un SAM de 87.5 millones y una meta de capturar 2.5 millones en tres años. Eso representa menos del 3% del mercado servible.")
+"Nuestro mercado inicial es la formación digital especializada para construcción en Latinoamérica. Estimamos un TAM de 360 millones de dólares, un SAM de 87.5 millones y una meta de capturar 2.5 millones en tres años. Eso representa menos del 3% del mercado servible.")
 
-# 10 MODELO B2C2B
-S("dark","Modelo B2C2B","statement",f"""
-  {quote('Profesional adopta.<br>Empresa escala.<br><span class="grad">Proyecto mejora.</span>')}
-  {flow([("B2C","hot"),("Equipos",""),("B2B","hot"),("B2C2B","win")])}
+# 10 MODELO B2C2B — culmina en B2C2B
+S("dark","Modelo B2C2B","b2c2b",f"""
+  {title('Profesional adopta. Empresa escala. <span class="grad">Proyecto mejora.</span>')}
+  <div class="b2flow reveal">
+    <div class="b2step"><span class="b2n">1</span><b>B2C</b><small>El profesional adopta</small></div>
+    <i class="b2arr">→</i>
+    <div class="b2step"><span class="b2n">2</span><b>Equipos</b><small>Aplican juntos</small></div>
+    <i class="b2arr">→</i>
+    <div class="b2step"><span class="b2n">3</span><b>B2B</b><small>La empresa escala</small></div>
+    <i class="b2arr">→</i>
+    <div class="b2step b2win"><b>B2C2B</b><small>Proyecto mejora · todo el enfoque</small></div>
+  </div>
+  {lead('Empezamos con el profesional y construimos adopción. Cuando aplica lo aprendido, la empresa ve valor y lo escala a equipos. Así pasamos de <b>adquisición individual a expansión empresarial</b> — y a mejores proyectos.')}
 """,
-"Nuestro modelo empieza con el profesional. Construimos comunidad, confianza y adopción con personas que ya quieren mejorar su trabajo. Cuando esos profesionales aplican lo aprendido, la empresa ve valor y puede escalarlo a equipos completos. Así pasamos de adquisición individual a expansión empresarial.")
+"Nuestro modelo empieza con el profesional. Construimos comunidad, confianza y adopción con personas que ya quieren mejorar su trabajo. Cuando esos profesionales aplican lo aprendido, la empresa ve valor y puede escalarlo a equipos completos. Así pasamos de adquisición individual a expansión empresarial y, finalmente, a mejores proyectos. El B2C2B es todo el enfoque.")
 
-# 11 MODELO DE NEGOCIO — BLOQUES PRICING
+# 11 MODELO DE NEGOCIO — Live · B2B · On-demand AI
 S("dark","Modelo de negocio","blocks",f"""
   {title('Tres líneas clave', "blk-title")}
-  {lead('<b>Live valida · On-demand escala · B2B ancla.</b>')}
+  {lead('<b>Live valida · B2B ancla · On-demand AI escala.</b>')}
   <div class="pblocks reveal">
-    {pblock("1 · LIVE","valida","🎓",'<b>USD 200</b><small>ticket promedio</small>',"violet")}
-    {pblock("2 · ON-DEMAND (B2C)","escala","📚",'<b>USD 40</b><small>microlearning / curso</small><b class="pb-2">USD 250</b><small>suscripción anual</small>',"green")}
-    {pblock("3 · B2B","ancla","🏢",'<b>A medida</b><small>planes corporativos</small>',"blue")}
+    {pblock("1 · LIVE","valida","🎓",'<b>USD 200</b><small>ticket promedio</small><small class="pb-tag2">caja + comunidad + validación</small>',"violet")}
+    {pblock("2 · B2B","ancla","🏢",'<b>A medida</b><small>planes corporativos</small><small class="pb-tag2">ticket alto + expansión empresarial</small>',"blue")}
+    {pblock("3 · ON-DEMAND AI","escala","📚",'<b>USD 40</b><small>microlearning / curso</small><b class="pb-2">USD 250</b><small>suscripción anual</small>',"green")}
   </div>
 """,
-"Tenemos tres motores. Live Training genera caja, comunidad y validación, con un ticket promedio de unos 200 dólares. On-demand B2C escala: microlearning desde 40 dólares por curso y suscripción anual de 250. Y B2B ancla con planes corporativos a medida, de mayor valor y recurrencia.")
+"Tenemos tres motores. Live Training genera caja, comunidad y validación de lo que realmente necesita el profesional, con un ticket promedio de unos 200 dólares. B2B aporta contratos de mayor valor, conecta directamente con las empresas y valida sus necesidades de talento, con planes corporativos a medida. Y On-demand AI convierte el conocimiento validado en rutas digitales escalables, con microlearning desde 40 dólares por curso y suscripción anual de 250, con mayor margen y menor costo marginal.")
 
-# 12 TRACCIÓN & COMUNIDAD
-S("light","Tracción & comunidad","chart",f"""
-  {title('El mercado <span class="grad">ya paga</span> — y la comunidad ya está')}
+# 12 TRACCIÓN
+S("light","Tracción","chart",f"""
+  {title('El mercado <span class="grad">ya paga</span> por esta necesidad')}
   <div class="trac">
    <div class="trac-l">{barchart([("2024 · validación",13.6,"US$30K","ink"),("2025 · ×4",54.5,"US$120K","violet"),("2026E",100,"US$220K","green")])}</div>
    <div class="trac-r">
      <div class="statrow bare st-mini">
-       {stat("95","Comunidad", suffix="K+", tone="blue")}
-       {stat("14","Países", tone="violet")}
-       {stat("100","Alianzas", suffix="+", tone="green")}
-       {stat("50","Convenios", suffix="+", tone="violet")}
+       {stat("10","Estudiantes a la fecha","", suffix="K+", tone="green")}
+       {stat("95","Comunidad","", suffix="K+", tone="blue")}
      </div>
    </div>
   </div>
 """,
-"En 2024 vendimos 30 mil dólares. En 2025 crecimos a 120 mil, cuatro veces más. Para 2026 proyectamos 220 mil. Y no partimos de cero: somos la comunidad más grande en tecnología aplicada a construcción, con más de 95 mil profesionales, presencia en 14 países, más de 100 alianzas y más de 50 convenios. El mercado ya paga por esta necesidad.")
+"Formamos una comunidad de más de 95 mil personas y hemos tenido más de 10 mil estudiantes a la fecha. En 2024 vendimos 30 mil dólares. En 2025 crecimos a 120 mil dólares. Y en 2026 proyectamos 220 mil dólares. La tracción muestra que el mercado ya paga por esta necesidad.")
 
-# 13 GO TO MARKET
+# 13 COMUNIDAD Y VALIDACIÓN
+S("light","Comunidad y validación","statement",f"""
+  {title('No partimos <span class="grad">desde cero</span>')}
+  <div class="statrow st-mini">
+    {stat("95","Comunidad","presencia en RRSS", suffix="K+", tone="blue")}
+    {stat("10","Estudiantes","a la fecha", suffix="K+", tone="green")}
+    {stat("14","Países","usan la plataforma", tone="violet")}
+    {stat("100","Alianzas","empresas e instituciones", suffix="+", tone="blue")}
+    {stat("200","Expertos","del sector AEC", suffix="+", tone="green")}
+    {stat("12","Clientes B2B","15% ventas internacionales", suffix="+", tone="violet")}
+  </div>
+""",
+"No partimos desde cero. Tenemos una comunidad de más de 95 mil personas, más de 10 mil estudiantes, presencia en 14 países y más de 100 alianzas con empresas, instituciones educativas y organizaciones del sector. Más de 200 expertos han formado parte de AECODE. Ya tenemos más de 12 clientes B2B y 15% de nuestras ventas son internacionales.")
+
+# 14 GO TO MARKET
 S("light","Go To Market","statement",f"""
   {title('El B2C da entrada. El <span class="grad">B2B da expansión</span>.')}
   {flow([("Comunidad","hot"),("Diagnóstico",""),("Live",""),("On-demand",""),("B2B","win")])}
-  {chiprow(["CAC bajo","NPS alto","Expansión por cuenta"])}
+  {chiprow(["Contenido especializado","Programas en vivo","Microlearning","Expansión empresarial"])}
 """,
 "Nuestro go-to-market parte de comunidad y contenido especializado. Atraemos profesionales, los llevamos a diagnóstico, activamos con programas live, convertimos lo validado en microlearning y escalamos hacia empresas. El B2C nos da entrada. El B2B nos da expansión.")
 
-# 14 MÉTRICA NORTE
-S("light","Métrica norte","statement",f"""
+# 15 MÉTRICA NORTE — interactiva y colorida
+S("light","Métrica norte","nsm",f"""
   {title('Métrica norte: medimos <span class="grad">adopción real</span>')}
-  {grid([
-    card("Producto","<b>Prácticas aplicadas completadas / mes.</b><br>No medimos videos vistos: medimos quién <i>aplica</i>.", num="◎", tone="green"),
-    card("Negocio","<b>% de revenue de B2B + On-demand AI.</b><br>Mientras más alto, más escalable y recurrente.", num="◷", tone="blue"),
-  ],2)}
+  <div class="nsm-grid reveal">
+    <div class="nsm-card nsm-prod" data-tip="No medimos videos vistos, medimos quién aplica">
+      <div class="nsm-icon">◎</div>
+      <div class="nsm-tag">Producto</div>
+      <div class="nsm-v">Prácticas aplicadas<br>completadas <span>/ mes</span></div>
+      <div class="nsm-sub">Usuarios que completan entregables y evidencias.</div>
+    </div>
+    <div class="nsm-card nsm-neg" data-tip="Mientras más alto, más escalable y recurrente">
+      <div class="nsm-icon">◷</div>
+      <div class="nsm-tag">Negocio</div>
+      <div class="nsm-v">% de revenue de<br>B2B + On-demand AI</div>
+      <div class="nsm-sub">Ahí está la escalabilidad y la recurrencia.</div>
+    </div>
+  </div>
 """,
-"Medimos dos cosas. En producto, no queremos solo usuarios viendo videos: queremos prácticas aplicadas completadas por mes, porque eso refleja adopción real. En negocio, medimos qué porcentaje del revenue viene de líneas escalables: B2B y On-demand AI. Esas son nuestras dos métricas norte.")
+"Medimos dos cosas. En producto, no queremos solo usuarios viendo videos: queremos prácticas aplicadas, usuarios que completan entregables y evidencias por mes. En negocio, queremos que cada vez más revenue venga de B2B y On-demand AI, porque ahí está la escalabilidad.")
 
-# 15 DIFERENCIACIÓN — 2x2
+# 16 DIFERENCIACIÓN — 2x2
 S("dark","Diferenciación","map",f"""
   {title('Profundidad <span class="grad">vertical AEC</span> + IA')}
   {map2x2([
@@ -323,29 +351,29 @@ S("dark","Diferenciación","map",f"""
     (88,82,"+academias","ink",False),
   ], ("Contenido genérico","AEC (Arq · Ing · Cons)"), ("e-Learning + IA","Cursos e-Learning"))}
 """,
-"Las plataformas horizontales venden contenido genérico. AECODE compite desde la profundidad vertical en construcción, sumando IA. En el cuadrante superior derecho —AEC más e-Learning con IA— estamos solos, creciendo a tres veces por año. Tenemos comunidad AEC, expertos, rutas por rol, IA sectorial y un modelo que conecta aprendizaje con productividad.")
+"Las plataformas horizontales venden contenido genérico. AECODE compite desde la profundidad vertical en construcción, sumando IA. En el cuadrante superior derecho —AEC más e-Learning con IA— estamos solos, creciendo a tres veces por año. Tenemos comunidad AEC, expertos, rutas por rol, prácticas aplicadas, IA sectorial y un modelo que conecta aprendizaje con productividad.")
 
-# 16 ROADMAP
+# 17 ROADMAP
 S("light","Roadmap","timeline",f"""
   {title('De operación validada a <span class="grad">plataforma regional</span>')}
   <div class="tl reveal">
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2024</div><div class="tl-what"><b>Live</b> + comunidad.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2024</div><div class="tl-what">Comunidad + <b>programas en vivo</b>.</div></div>
     <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2025</div><div class="tl-what">Primer <b>B2B</b> + ×4 crecimiento.</div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2026</div><div class="tl-what"><b>Microlearning + IA</b>.</div></div>
-    <div class="tl-item win"><div class="tl-dot"></div><div class="tl-when">2027</div><div class="tl-what"><b>LATAM</b> + AI Talent.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2026</div><div class="tl-what"><b>Microlearning + IA</b> aplicada.</div></div>
+    <div class="tl-item win"><div class="tl-dot"></div><div class="tl-when">2027</div><div class="tl-what"><b>Expansión regional</b>.</div></div>
   </div>
 """,
-"En 2024 validamos comunidad y programas en vivo. En 2025 hicimos nuestro primer piloto B2B y crecimos cuatro veces. En 2026 lanzamos microlearning e IA aplicada, empezando con programas como IA para ingeniería civil. En 2027 buscamos expansión regional, apoyados en eventos, alianzas y programas como AI Talent.")
+"En 2024 validamos comunidad y programas en vivo. En 2025 hicimos nuestro primer piloto B2B y crecimos cuatro veces. En 2026 lanzamos microlearning e IA aplicada, empezando con programas como IA para ingeniería civil. Y en 2027 buscamos expansión regional apoyados en eventos, alianzas y programas de internacionalización.")
 
-# 17 ESCALABILIDAD
+# 18 ESCALABILIDAD
 S("light","Escalabilidad","chart",f"""
   {title('Mismo conocimiento. Más usuarios. <span class="grad">Menor costo marginal.</span>')}
   {stackbar([("2024",[30,0,0],"100% Live"),("2026E",[132,55,33],"40% escalable"),("2027 Target",[160,140,120],"62% escalable")],
             [("B2C Live","#4465EE"),("B2B","#17B14E"),("On-demand AI","#6D70F9")], 420)}
 """,
-"La clave es cambiar el mix. Hoy Live valida y genera caja. Pero cada programa validado se convierte en cápsulas, rutas, prácticas y activos digitales reutilizables. Así crece el margen, la recurrencia y la capacidad de escalar sin depender solo de horas humanas.")
+"La clave es cambiar el mix. Hoy Live valida y genera caja. Pero cada programa validado se convierte en cápsulas, rutas prácticas y activos digitales reutilizables. Así crece el margen, la recurrencia y la capacidad de escalar sin depender solo de horas humanas.")
 
-# 18 EQUIPO
+# 19 EQUIPO
 S("dark","Equipo","team",f"""
   {title('Equipo técnico con <span class="grad">ejecución validada</span> y visión sectorial')}
   <div class="team reveal">
@@ -364,26 +392,29 @@ S("dark","Equipo","team",f"""
 """,
 "Tenemos un equipo multidisciplinario de más de doce personas con ejecución validada y visión sectorial. Yudely Palpan, CTO y founder; Alejandro Palpan, CEO y estrategia; Julie Palero en finanzas y mercados internacionales; Daniella Galvez en arquitectura académica y de skills; Anggie Palpan en marketing y growth; Erika Delgado en comunidad y desarrollo de negocio; Fabrizio Inga como head of data e IA; más Fernando, Marlon, Anderson y Yary en producto, automatización, full stack y diseño. No es un equipo que recién va a validar: es el que ya construyó comunidad, vendió y creció.")
 
-# 19 ASK
+# 20 ASK
 S("dark","Ask","ask",f"""
   {title('US$125K para <span class="grad">escalar lo validado</span>')}
   <div class="ask-grid reveal">
-    <div class="ask-left">{donut([("IA + plataforma",60,"#6D70F9"),("Growth B2C2B / LATAM",30,"#17B14E"),("Microlearning",10,"#4465EE")])}</div>
+    <div class="ask-left">{donut([("IA + plataforma",60,"#6D70F9"),("Growth B2C2B / LATAM",30,"#17B14E"),("Microlearning on-demand",10,"#4465EE")])}</div>
     <div class="ask-right">
-      {bullets(["<b>60%</b> — IA + plataforma","<b>30%</b> — growth B2C2B / LATAM","<b>10%</b> — microlearning"])}
+      {bullets(["<b>60%</b> — IA + plataforma","<b>30%</b> — growth B2C2B + expansión LATAM","<b>10%</b> — microlearning on-demand"])}
       <div class="ask-note reveal">El capital no financia una idea: financia convertir una operación validada en una <b>plataforma escalable</b>.</div>
     </div>
   </div>
 """,
-"Buscamos 125 mil dólares. El 60% irá a IA y plataforma. El 30% a growth B2C2B y expansión LATAM. El 10% a producción de microlearning. El capital no financia una idea. Financia la conversión de una operación validada en una plataforma escalable.")
+"Buscamos 125 mil dólares. El 60% irá a IA y plataforma. El 30% a growth B2C2B y expansión LATAM. El 10% a producción de contenido microlearning y on-demand. El capital no financia una idea. Financia la conversión de una operación validada en una plataforma escalable.")
 
-# 20 CIERRE
+# 21 CIERRE — QR (sin correo)
 S("dark","Cierre","close",f"""
   {LOGO}
   <div class="close-cta reveal">Aprende · Aplica · <span class="grad">Construye mejor</span></div>
-  <div class="close-mail reveal">apalpan@genplusdesign.com · AECODE</div>
+  <div class="close-qr reveal">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=2&qzone=1&color=4A3AC1&data={_a(QR_URL)}" alt="QR AECODE" loading="lazy">
+    <span>Escanéame</span>
+  </div>
 """,
-"La construcción no se transforma solo con más herramientas ni más cursos. Se transforma cuando su gente aprende a aplicar tecnología en el trabajo real. AECODE existe para acelerar esa adopción tecnológica en construcción. Aprende, aplica, construye mejor.")
+"La construcción no se transforma solo con más herramientas ni más cursos. Se transforma cuando su gente aprende a aplicar tecnología en el trabajo real. AECODE existe para acelerar esa adopción tecnológica y mejorar la productividad en construcción. AECODE: aprende, aplica, construye mejor.")
 
 # ---------- render ----------
 def render_slide(i,s):
@@ -451,8 +482,10 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .layout-close .slide-mark,.layout-brand .slide-mark{display:none}
 .close-cta{font-weight:800;font-size:clamp(24px,3vw,38px);color:var(--fg);letter-spacing:-.01em}
 .close-cta::before{content:"";display:inline-block;width:34px;height:3px;background:var(--grad);border-radius:3px;vertical-align:middle;margin-right:16px}
-.close-mail{font-weight:700;font-size:15px;color:var(--muted);margin-top:6px}
-/* statement */
+.close-qr{display:flex;flex-direction:column;align-items:center;gap:8px;align-self:flex-start;margin-top:6px}
+.close-qr img{width:138px;height:138px;border-radius:14px;background:#fff;padding:10px;box-shadow:0 14px 34px rgba(0,0,0,.3)}
+.close-qr span{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+/* statement / brand */
 .layout-statement,.layout-brand{gap:30px}
 .bigquote{font-weight:800;line-height:1.08;letter-spacing:-.03em;font-size:clamp(33px,5vw,60px);text-wrap:balance;max-width:22ch;border-left:3px solid var(--accent3);padding-left:30px}
 /* eqs */
@@ -471,8 +504,8 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .statrow.bare .stat{background:none;border:none;padding:4px 0}
 .statrow.bare .stat:hover{transform:none;box-shadow:none}
 .stat-num{font-weight:800;line-height:1;font-size:clamp(38px,5vw,64px);letter-spacing:-.03em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:1px;color:var(--accent)}
-.statrow.bare .stat-num{font-size:clamp(50px,7vw,90px)}
-.statrow.st-mini .stat-num{font-size:clamp(34px,4.4vw,52px)}
+.statrow.bare .stat-num{font-size:clamp(48px,6.6vw,84px)}
+.statrow.st-mini .stat-num{font-size:clamp(32px,4vw,48px)}
 .stat-green .stat-num{color:var(--accent3)} .stat-blue .stat-num{color:var(--accent2)} .stat-danger .stat-num{color:var(--danger)}
 .stat-pre,.stat-suf{font-size:.48em;font-weight:700}
 .stat-label{font-size:15px;font-weight:700;color:var(--fg);line-height:1.25}
@@ -501,22 +534,23 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .flow-step.hot{border-color:var(--accent2);color:var(--accent2);box-shadow:0 0 24px rgba(68,101,238,.16)}
 .flow-step.win{background:var(--grad3);color:#fff;border:none}
 .flow-arr{color:var(--accent);font-weight:800;font-size:18px;font-style:normal}
+/* std banner */
+.std-banner{font-size:16px;line-height:1.45;color:var(--fg);padding:15px 18px;border-radius:14px;background:var(--card);border:1px solid var(--card-line);border-left:4px solid var(--accent3)}
+.std-banner b{color:var(--accent);font-weight:800} .std-k{font-weight:800;color:var(--accent3)}
 /* latam */
 .layout-split-latam .slide-inner{padding-right:64px}
 .split-latam{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center;width:100%}
 .sl-left{display:flex;flex-direction:column;gap:18px}
 .latam{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;padding:10px}
 .lt-grid-bg{position:absolute;inset:-10px;z-index:0;border-radius:20px;
-  background:linear-gradient(rgba(124,126,223,.12) 1px,transparent 1px) 0 0/100% 28px,
-  linear-gradient(90deg,rgba(124,126,223,.12) 1px,transparent 1px) 0 0/28px 100%;
+  background:linear-gradient(rgba(124,126,223,.12) 1px,transparent 1px) 0 0/100% 28px,linear-gradient(90deg,rgba(124,126,223,.12) 1px,transparent 1px) 0 0/28px 100%;
   -webkit-mask:radial-gradient(60% 60% at 50% 50%,#000,transparent);mask:radial-gradient(60% 60% at 50% 50%,#000,transparent)}
-.lt-pin{position:relative;z-index:1;display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border-radius:12px;
-  background:var(--card);border:1px solid var(--card-line);transition:transform .18s var(--ease),border-color .2s;cursor:default}
+.lt-pin{position:relative;z-index:1;display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border-radius:12px;background:var(--card);border:1px solid var(--card-line);transition:transform .18s var(--ease),border-color .2s;cursor:default}
 .slide.active .lt-pin:hover{transform:translateY(-3px);border-color:var(--accent)}
 .lt-dot{width:11px;height:11px;border-radius:50%;background:var(--accent3);margin-top:4px;flex:none;position:relative}
 .lt-dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--accent3);opacity:0;animation:ping 2.4s var(--ease) infinite}
 @keyframes ping{0%{transform:scale(.6);opacity:.7}70%,100%{transform:scale(1.5);opacity:0}}
-.lt-txt b{display:block;font-size:15px;font-weight:800;color:var(--fg)} .lt-txt small{font-size:12px;color:var(--accent-ink,var(--muted));color:var(--muted)}
+.lt-txt b{display:block;font-size:15px;font-weight:800;color:var(--fg)} .lt-txt small{font-size:12px;color:var(--muted)}
 /* product / demo */
 .prod{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center;width:100%}
 .prod-l{display:flex;flex-direction:column;gap:24px}
@@ -527,11 +561,8 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .demo-bar{display:flex;align-items:center;gap:7px;padding:12px 17px;background:var(--card);border-bottom:1px solid var(--card-line)}
 .demo-bar>span{width:11px;height:11px;border-radius:50%;background:var(--line)}
 .demo-url{margin-left:14px;font-size:13px;color:var(--muted);background:var(--bg);padding:5px 14px;border-radius:6px;flex:1;max-width:280px}
-.demo-body{padding:0}
-.mock{position:relative;padding:46px 28px 40px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;
-  background:radial-gradient(60% 60% at 50% 35%,rgba(124,126,223,.22),transparent 70%)}
-.mock-orb{width:96px;height:96px;border-radius:50%;background:conic-gradient(from 0deg,#6D70F9,#4465EE,#17B14E,#6D70F9);filter:blur(2px);opacity:.9;
-  box-shadow:0 0 60px rgba(109,112,249,.6);animation:spin 8s linear infinite}
+.mock{position:relative;padding:46px 28px 40px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;background:radial-gradient(60% 60% at 50% 35%,rgba(124,126,223,.22),transparent 70%)}
+.mock-orb{width:96px;height:96px;border-radius:50%;background:conic-gradient(from 0deg,#6D70F9,#4465EE,#17B14E,#6D70F9);filter:blur(2px);opacity:.9;box-shadow:0 0 60px rgba(109,112,249,.6);animation:spin 8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .mock-play{position:absolute;top:64px;font-size:30px;color:#fff;opacity:.95}
 .mock-h{font-weight:800;font-size:22px;color:var(--fg);margin-top:14px}
@@ -545,15 +576,13 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .eng-item{font-size:15px;font-weight:600;color:var(--fg);padding:8px 13px;border-radius:10px;background:var(--card);border:1px solid var(--card-line)}
 .eng-out .eng-item{color:var(--accent3)}
 .eng-core{display:flex;flex-direction:column;align-items:center;gap:10px}
-.eng-ring{width:184px;height:184px;border-radius:50%;display:grid;place-items:center;text-align:center;position:relative;
-  background:radial-gradient(circle,rgba(124,126,223,.12),transparent 68%)}
-.eng-ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid transparent;
-  background:conic-gradient(from 0deg,#6D70F9,#4465EE,#17B14E,#6D70F9) border-box;-webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 9s linear infinite}
-.eng-formula{font-size:14px;font-weight:700;line-height:1.5;color:var(--fg);font-style:italic;z-index:1}
-.eng-cap{font-size:12.5px;font-weight:700;color:var(--accent3);text-align:center}
+.eng-ring{width:176px;height:176px;border-radius:50%;display:grid;place-items:center;text-align:center;position:relative;background:radial-gradient(circle,rgba(124,126,223,.14),transparent 68%)}
+.eng-ring::before{content:"";position:absolute;inset:0;border-radius:50%;padding:3px;background:conic-gradient(from 0deg,#6D70F9,#4465EE,#17B14E,#6D70F9);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 9s linear infinite}
+.eng-core-in{z-index:1} .eng-core-in b{display:block;font-weight:800;font-size:34px;color:var(--fg);line-height:1} .eng-core-in span{font-size:14px;font-weight:700;color:var(--accent)}
+.eng-cap{font-size:12.5px;font-weight:700;color:var(--accent3);text-align:center;max-width:200px}
 .eng-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
-.em{font-size:14px;color:var(--muted);padding:11px 15px;border-radius:12px;background:var(--card);border:1px solid var(--card-line);transition:border-color .2s,transform .18s var(--ease);cursor:default}
-.slide.active .em:hover{border-color:var(--accent2);transform:translateY(-2px)} .em b{color:var(--accent2)}
+.em{font-size:14px;color:var(--muted);padding:12px 15px;border-radius:12px;background:var(--card);border:1px solid var(--card-line);transition:border-color .2s,transform .18s var(--ease);cursor:default}
+.slide.active .em:hover{border-color:var(--accent2);transform:translateY(-2px)} .em b{display:block;color:var(--accent2);font-size:15px;margin-bottom:2px} .em small{font-size:12.5px;color:var(--muted)}
 /* barchart */
 .barchart{display:flex;flex-direction:column;gap:15px;width:100%}
 .bar{cursor:default} .bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;font-size:15px}
@@ -564,9 +593,8 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .bar-green .bar-top b{color:var(--accent3)} .bar-green .bar-track i{background:linear-gradient(100deg,var(--green),#43d98f)}
 .bar-blue .bar-top b{color:var(--accent2)} .bar-blue .bar-track i{background:linear-gradient(100deg,var(--blue),#6f8cff)}
 .bar-ink .bar-top b{color:var(--muted)} .bar-ink .bar-track i{background:var(--muted);opacity:.7}
-/* traccion combo */
 .trac{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
-.st-mini{grid-template-columns:1fr 1fr;gap:16px 24px}
+.st-mini{grid-template-columns:1fr 1fr;gap:16px 22px}
 /* stackbar */
 .stackbar{display:flex;flex-direction:column;gap:18px;width:100%}
 .sb-cols{display:flex;align-items:flex-end;justify-content:space-around;gap:30px;height:248px;padding:0 6px;border-bottom:2px solid var(--card-line)}
@@ -605,6 +633,16 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .donut-legend{display:flex;flex-direction:column;gap:13px}
 .dn-leg{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted);cursor:default;transition:transform .18s var(--ease)}
 .slide.active .dn-leg:hover{transform:translateX(4px)} .dn-leg span{width:14px;height:14px;border-radius:4px;flex:none} .dn-leg b{color:var(--fg);font-weight:800}
+/* b2c2b */
+.layout-b2c2b{gap:26px}
+.b2flow{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap}
+.b2step{flex:1;min-width:130px;display:flex;flex-direction:column;gap:5px;padding:20px 18px;border-radius:16px;background:var(--card);border:1px solid var(--card-line);position:relative;transition:transform .2s var(--ease),border-color .2s}
+.slide.active .b2step:hover{transform:translateY(-5px);border-color:var(--accent)}
+.b2n{position:absolute;top:12px;right:14px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;color:#fff;background:var(--grad)}
+.b2step b{font-weight:800;font-size:24px;color:var(--fg)} .b2step small{font-size:13.5px;color:var(--muted);line-height:1.3}
+.b2win{flex:1.5;background:var(--grad3);border:none;box-shadow:0 16px 40px rgba(38,185,111,.3)}
+.b2win b{color:#fff;font-size:32px} .b2win small{color:rgba(255,255,255,.92);font-weight:700}
+.b2arr{display:flex;align-items:center;color:var(--accent);font-weight:800;font-size:22px;font-style:normal}
 /* pricing blocks */
 .layout-blocks{gap:18px}
 .pblocks{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:4px}
@@ -618,17 +656,33 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .pb-role{font-weight:700;font-size:17px;color:var(--fg)}
 .pb-icon{font-size:34px;line-height:1}
 .pb-price b{display:block;font-weight:800;font-size:30px;color:var(--fg);letter-spacing:-.02em} .pb-price b.pb-2{margin-top:10px}
-.pb-price small{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.pb-price small{display:block;font-size:13px;color:var(--muted);font-weight:600} .pb-tag2{margin-top:9px;color:var(--accent)!important;font-weight:700!important}
+.pblock-green .pb-tag2{color:var(--accent3)!important} .pblock-blue .pb-tag2{color:var(--accent2)!important}
 /* map2x2 */
 .map2x2{display:grid;grid-template-columns:20px 1fr;grid-template-rows:1fr 20px;gap:6px;width:100%;height:404px}
 .mp-axis-y{grid-column:1;grid-row:1;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.mp-axis-y::before,.mp-axis-x::before{content:"";flex:1}
 .mp-axis-x{grid-column:2;grid-row:2;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .mp-plane{grid-column:2;grid-row:1;position:relative;border-left:2px solid var(--card-line);border-bottom:2px solid var(--card-line);
   background:linear-gradient(var(--card-line) 1px,transparent 1px) 0 50%/100% 50%,linear-gradient(90deg,var(--card-line) 1px,transparent 1px) 50% 0/50% 100%;background-color:rgba(124,126,223,.05)}
 .mp-dot{position:absolute;transform:translate(-50%,-50%);font-size:13px;font-weight:700;color:var(--fg);white-space:nowrap;padding:6px 11px;border-radius:9px;background:var(--card);border:1px solid var(--card-line);cursor:default;transition:transform .18s var(--ease),border-color .2s}
 .slide.active .mp-dot:hover{transform:translate(-50%,-50%) scale(1.08);border-color:var(--accent)}
 .mp-big{color:#fff;background:var(--grad3);border:none;font-weight:800;font-size:14.5px;box-shadow:0 0 26px rgba(38,185,111,.4)}
+/* nsm cards */
+.layout-nsm{gap:28px}
+.nsm-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.nsm-card{position:relative;padding:30px 28px;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;gap:10px;border:1px solid var(--card-line);background:var(--card);transition:transform .22s var(--ease),box-shadow .3s}
+.nsm-card::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;opacity:.18;filter:blur(6px)}
+.nsm-prod::after{background:radial-gradient(circle,#17B14E,transparent 70%)}
+.nsm-neg::after{background:radial-gradient(circle,#6D70F9,transparent 70%)}
+.slide.active .nsm-card:hover{transform:translateY(-7px)}
+.slide.active .nsm-prod:hover{box-shadow:0 22px 50px rgba(23,177,78,.32)} .slide.active .nsm-neg:hover{box-shadow:0 22px 50px rgba(109,112,249,.34)}
+.nsm-icon{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:28px;color:#fff;z-index:1}
+.nsm-prod .nsm-icon{background:linear-gradient(135deg,#17B14E,#1fa9a0)} .nsm-neg .nsm-icon{background:linear-gradient(135deg,#6D70F9,#4465EE)}
+.nsm-tag{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;z-index:1}
+.nsm-prod .nsm-tag{color:#17B14E} .nsm-neg .nsm-tag{color:var(--violet2)}
+.is-dark .nsm-prod .nsm-tag{color:#2FD06E} .is-dark .nsm-neg .nsm-tag{color:#A6A7FF}
+.nsm-v{font-weight:800;font-size:clamp(24px,2.7vw,32px);line-height:1.1;color:var(--fg);z-index:1} .nsm-v span{color:var(--muted);font-weight:700}
+.nsm-sub{font-size:14.5px;color:var(--muted);line-height:1.4;z-index:1}
 /* team */
 .layout-team{gap:22px}
 .team{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
@@ -687,15 +741,15 @@ body.mobile .stage{width:100vw;height:100dvh;transform:none!important}
 body.mobile .slide{display:block;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
 body.mobile .slide-inner{position:static;height:auto;min-height:100%;justify-content:flex-start;padding:54px clamp(18px,5.5vw,30px) 82px;gap:clamp(16px,4vw,24px)}
 body.mobile .slide-foot{right:clamp(18px,5.5vw,30px);bottom:18px} body.mobile .slide-mark{top:18px;right:18px;height:24px}
-body.mobile .split,body.mobile .split-latam,body.mobile .prod,body.mobile .trac,body.mobile .ask-grid,body.mobile .grid-2,body.mobile .grid-3,body.mobile .tss,body.mobile .donut-wrap,body.mobile .engine,body.mobile .pblocks,body.mobile .eng-methods{display:flex;flex-direction:column;gap:16px}
+body.mobile .split,body.mobile .split-latam,body.mobile .prod,body.mobile .trac,body.mobile .ask-grid,body.mobile .grid-2,body.mobile .grid-3,body.mobile .nsm-grid,body.mobile .tss,body.mobile .donut-wrap,body.mobile .engine,body.mobile .pblocks,body.mobile .eng-methods,body.mobile .b2flow{display:flex;flex-direction:column;gap:16px}
 body.mobile .statrow,body.mobile .statrow-2,body.mobile .statrow-3,body.mobile .st-mini,body.mobile .latam{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 body.mobile .team{grid-template-columns:repeat(3,1fr);gap:10px}
-body.mobile .eng-out{align-items:flex-start;text-align:left}
+body.mobile .eng-out{align-items:flex-start;text-align:left} body.mobile .b2arr{transform:rotate(90deg);align-self:center}
 body.mobile .s-title{font-size:clamp(26px,7.4vw,38px);max-width:none}
 body.mobile .bigquote{font-size:clamp(27px,7.6vw,42px);max-width:none}
 body.mobile .lead{font-size:clamp(15px,4vw,18px);max-width:none}
 body.mobile .eq{font-size:clamp(19px,5.2vw,28px)}
-body.mobile .statrow.bare .stat-num{font-size:clamp(42px,12vw,64px)}
+body.mobile .statrow.bare .stat-num{font-size:clamp(40px,11vw,60px)}
 body.mobile .tss-rings,body.mobile .eng-ring{margin:0 auto}
 body.mobile .donut-svg{width:160px;height:160px}
 body.mobile .map2x2{height:340px}
