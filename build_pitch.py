@@ -102,7 +102,6 @@ S("dark","Contexto","statement",f"""
   {kicker("01 · Hook")}
   {title('La tecnología avanza <span class="grad">más rápido</span> que nuestra capacidad de adoptarla.')}
   {eqs([("Herramientas","≠","adopción","neq"),("Aprender","≠","aplicar","neq"),("Adopción","=","productividad","eq")])}
-  {lead('La transformación digital no falla solo por falta de herramientas: falla cuando los equipos <b>no logran adoptarlas</b>. AECODE nace para cerrar esa brecha en construcción.')}
 """,
 "La tecnología avanza más rápido que la capacidad de las personas para adoptarla. La transformación digital no falla solo por falta de herramientas. Muchas veces falla porque los equipos no logran adoptarlas. AECODE nace para cerrar esa brecha en construcción.")
 
@@ -110,10 +109,8 @@ S("dark","Contexto","statement",f"""
 S("dark","Contexto","split",f"""
   {kicker("02 · Oportunidad")}
   {title('Mientras el mundo siga construyendo, su gente <span class="grad">tendrá que aprender</span>.')}
-  <div class="split">
-   <div class="split-l">{stat("280","Personas trabajan en construcción en el mundo","viviendas, hospitales, carreteras, infraestructura", suffix="M+")}</div>
-   <div class="split-r">{lead('La construcción no se detiene. Y la forma de diseñar, coordinar, planificar y gestionar proyectos está cambiando por la tecnología.')}{chiprow(["Digitalización BIM","Automatización","IA","Herramientas digitales"])}</div>
-  </div>
+  {stat("280","Personas trabajan hoy en construcción","", suffix="M+")}
+  {chiprow(["Digitalización BIM","Automatización","IA","Herramientas digitales"])}
 """,
 "La construcción no se detiene. Se seguirán construyendo viviendas, hospitales, carreteras, puentes e infraestructura. Más de 280 millones de personas trabajan en construcción en el mundo. Y todas enfrentan una transformación: la forma de diseñar, coordinar, planificar y gestionar proyectos está cambiando por la tecnología.")
 
@@ -122,7 +119,6 @@ S("dark","Contexto","statement",f"""
   {kicker("03 · Cambio inevitable")}
   {quote('Adoptar tecnología <span class="grad">ya no es opcional</span>.')}
   {chiprow(["Digitalización BIM","Automatización","IA","Productividad"])}
-  {lead('El reto no es solo conocer nuevas herramientas: es <b>saber aplicarlas</b> para ahorrar tiempo, coordinar mejor, reducir tareas repetitivas y tomar mejores decisiones.')}
 """,
 "La industria está entrando a una etapa donde la digitalización BIM, la automatización y la IA ya forman parte del trabajo real. El reto no es solo conocer nuevas herramientas. El reto es saber aplicarlas para ahorrar tiempo, coordinar mejor, reducir tareas repetitivas y tomar mejores decisiones.")
 
@@ -130,16 +126,7 @@ S("dark","Contexto","statement",f"""
 S("light","Problema","split",f"""
   {kicker("04 · Problema")}
   {title('No falta contenido.<br>Falta una <span class="grad">ruta clara</span> para aplicar.')}
-  <div class="split">
-   <div class="split-l">{grid([
-     card("Muchos cursos","Tutoriales, webinars, comunidades y respuestas con IA de sobra.", num="01"),
-     card("Poca claridad","No se sabe qué aprender primero ni qué sirve realmente.", num="02", tone="blue"),
-   ],1,"cards-sm")}</div>
-   <div class="split-r">{grid([
-     card("Poca práctica","El aprendizaje no se traduce en aplicación al trabajo.", num="03", tone="green"),
-     card("Baja adopción","Las empresas capacitan, pero el trabajo no cambia.", num="04"),
-   ],1,"cards-sm")}</div>
-  </div>
+  {chiprow(["Muchos cursos","Poca claridad","Poca práctica","Baja adopción"])}
 """,
 "Hoy no faltan cursos, tutoriales, webinars, comunidades ni respuestas con IA. El problema es que el aprendizaje está fragmentado. Muchos profesionales no saben qué aprender primero, qué les sirve realmente o cómo aplicarlo para mejorar su trabajo. Y muchas empresas capacitan, pero no siempre logran que esa capacitación cambie la forma de trabajar.")
 
@@ -148,7 +135,6 @@ S("light","Problema","statement",f"""
   {kicker("05 · Costo real")}
   {quote('Cuando el aprendizaje no se aplica, el <span class="grad">costo llega al proyecto</span>.')}
   {chiprow(["Sobrecostos","Retrasos","Retrabajo","Baja productividad"])}
-  {lead('Un error se vuelve retrabajo. Una mala coordinación retrasa una entrega. Un proceso manual consume horas que el proyecto ya no tiene. El problema no es solo educativo: es <b>operativo</b>.')}
 """,
 "En construcción, aprender tarde cuesta caro. Un error puede convertirse en retrabajo. Una mala coordinación puede retrasar una entrega. Un proceso manual puede consumir horas que el proyecto ya no tiene. El problema no es solo educativo. Es operativo: afecta al profesional, a la empresa y al proyecto.")
 
@@ -157,7 +143,6 @@ S("dark","Solución","statement",f"""
   {kicker("06 · Solución")}
   {title('AECODE acelera la <span class="grad">adopción tecnológica</span> en construcción.')}
   {flow([("Aprende tecnología",""),("Aplícala en proyectos reales","hot"),("Construye mejor","win")])}
-  {lead('Ayudamos a profesionales y empresas a aprender y aplicar Digitalización BIM, automatización, IA y herramientas digitales en el trabajo real. <b>No vendemos solo cursos:</b> convertimos aprendizaje en adopción, productividad y resultados.')}
 """,
 "AECODE ayuda a profesionales y empresas de construcción a aprender y aplicar digitalización BIM, automatización, IA y herramientas digitales en el trabajo real. No vendemos solo cursos. Convertimos aprendizaje técnico en adopción tecnológica, productividad y mejores resultados.")
 
@@ -166,7 +151,6 @@ S("light","Solución","flow",f"""
   {kicker("07 · Producto")}
   {title('Rutas prácticas <span class="grad">por rol</span>')}
   {flow([("Diagnóstico",""),("Ruta",""),("Microlearning",""),("Práctica","hot"),("Evidencia","win")])}
-  {lead('El usuario identifica su nivel, elige un rol o especialidad y avanza por una ruta práctica: aprende con cápsulas cortas, practica con casos reales y genera evidencia de avance. Pasamos del <b>aprendizaje disperso al progreso guiado</b>.')}
 """,
 "El usuario identifica su nivel, elige un rol o especialidad y avanza por una ruta práctica. Aprende con cápsulas cortas, practica con casos reales y genera evidencia de avance. Así pasamos de aprendizaje disperso a progreso guiado.")
 
@@ -175,7 +159,6 @@ S("light","Solución","demo",f"""
   {kicker("08 · Demo")}
   {title('Del aprendizaje disperso al <span class="grad">progreso guiado</span>')}
   {demoframe(flow([("Dashboard",""),("Ruta",""),("Práctica","hot"),("Evidencia","hot"),("Progreso","win")]))}
-  {lead('El usuario entra, recibe una ruta, consume cápsulas, desarrolla una práctica y visualiza su avance. El aprendizaje no se queda en contenido: <b>avanza hacia aplicación</b>.')}
 """,
 "Aquí mostramos cómo el usuario entra, recibe una ruta, consume cápsulas, desarrolla una práctica y visualiza su avance. El objetivo es que el aprendizaje no se quede en contenido. Debe avanzar hacia aplicación.")
 
@@ -183,54 +166,40 @@ S("light","Solución","demo",f"""
 S("dark","Solución","split",f"""
   {kicker("09 · IA")}
   {title('IA como <span class="grad">coach profesional</span>')}
-  <div class="split">
-   <div class="split-l">{chiprow(["Diagnostica","Recomienda","Guía","Mide"])}{lead('La IA no es decoración: diagnostica brechas, recomienda qué aprender, sugiere prácticas y mide progreso.')}</div>
-   <div class="split-r">{card("ChatGPT vs AECODE", 'ChatGPT puede ser la <b>biblioteca</b>.<br><br>AECODE es el <b>sistema que entrena</b> al profesional para aplicar tecnología en construcción.', tag="Diferencia", tone="green")}</div>
-  </div>
+  {chiprow(["Diagnostica","Recomienda","Guía","Mide"])}
+  {chip("ChatGPT es la biblioteca · AECODE entrena al profesional")}
 """,
 "La IA no es decoración. Diagnostica brechas, recomienda qué aprender, sugiere prácticas y mide progreso. ChatGPT puede ser la biblioteca. AECODE es el sistema que entrena al profesional para aplicar tecnología en construcción.")
 
 # 10 MERCADO
 S("light","Mercado","tss",f"""
   {kicker("10 · Mercado")}
-  {title('Mercado inicial: formación digital <span class="grad">AEC en LATAM</span>')}
-  <div class="split">
-    <div class="split-l">{tamsamsom([("TAM","US$360 M","Formación digital AEC LATAM"),("SAM","US$87.5 M","Mercado servible"),("SOM 3 años","US$2.5 M","Meta de captura")])}</div>
-    <div class="split-r">{lead('Apuntamos a capturar <b>US$2.5M en tres años</b> — menos del <b>3%</b> del mercado servible. No necesitamos dominar el mercado: una porción de una vertical con alto dolor basta para construir una compañía relevante.')}</div>
-  </div>
+  {title('Formación digital <span class="grad">AEC en LATAM</span>')}
+  {tamsamsom([("TAM","US$360 M","Formación digital AEC LATAM"),("SAM","US$87.5 M","Mercado servible"),("SOM 3 años","US$2.5 M","Meta · menos del 3% del SAM")])}
 """,
 "Nuestro mercado inicial es formación digital especializada para construcción en Latinoamérica. Estimamos un TAM de 360 millones de dólares, un SAM de 87.5 millones y una meta de capturar 2.5 millones en tres años. Eso representa menos del 3% del mercado servible.")
 
 # 11 B2B2C
 S("dark","Modelo","statement",f"""
   {kicker("11 · B2B2C")}
-  {title('<span class="grad">Empresa paga. Profesional aprende. Industria valida.</span>')}
-  {flow([("Empresa paga / impulsa","hot"),("Profesional aprende y aplica",""),("Industria valida el talento","win")])}
+  {quote('<span class="grad">Empresa paga.<br>Profesional aprende.<br>Industria valida.</span>')}
   {chiprow(["CAC ↓","LTV ↑","Productividad ↑"])}
-  {lead('El B2B2C conecta todo: la empresa gana productividad, el profesional gana empleabilidad y AECODE reduce CAC, aumenta LTV y conecta aprendizaje con productividad.')}
 """,
 "El modelo B2B2C conecta todo. La empresa paga o impulsa la capacitación. El profesional aprende y aplica. Y la industria valida mejor el talento. Esto reduce CAC, aumenta LTV y conecta aprendizaje con productividad.")
 
 # 12 MODELO
 S("dark","Modelo","cards",f"""
   {kicker("12 · Modelo")}
-  {title('<span class="grad">Live valida. B2B ancla. On-demand AI escala.</span>')}
-  {grid([
-   card("B2C Live","Genera caja, comunidad y validación.", num="◆"),
-   card("B2B","Contratos de mayor valor y recurrencia.", num="◆", tone="green"),
-   card("On-demand AI","Conocimiento validado → activos digitales escalables.", num="◆", tone="blue"),
-  ],3)}
+  {quote('<span class="grad">Live valida.<br>B2B ancla.<br>On-demand AI escala.</span>')}
+  {chiprow(["B2C Live → caja","B2B → recurrencia","On-demand AI → margen"])}
 """,
 "B2C Live genera caja, comunidad y validación. B2B aporta contratos de mayor valor y recurrencia. On-demand AI convierte conocimiento validado en activos digitales escalables.")
 
 # 13 TRACCIÓN
 S("light","Tracción","chart",f"""
   {kicker("13 · Tracción")}
-  {title('US$30K → US$120K → <span class="grad">US$220K E</span>')}
-  <div class="split">
-   <div class="split-l">{barchart([("2024",13.6,"US$30K","ink"),("2025 · ×4",54.5,"US$120K","violet"),("2026E",100,"US$220K","green")])}</div>
-   <div class="split-r">{stat("4","Crecimiento 2024 → 2025","la demanda ya está validada", prefix="×", tone="green")}{lead('En 2024 vendimos US$30K. En 2025 crecimos a <b>US$120K, ×4</b>. Para 2026 proyectamos US$220K.')}</div>
-  </div>
+  {title('La demanda <span class="grad">ya está validada</span>')}
+  {barchart([("2024",13.6,"US$30K","ink"),("2025 · ×4 crecimiento",54.5,"US$120K","violet"),("2026E",100,"US$220K","green")])}
 """,
 "En 2024 vendimos 30 mil dólares. En 2025 crecimos a 120 mil dólares, cuatro veces más. Para 2026 proyectamos 220 mil dólares. La demanda ya está validada.")
 
@@ -240,7 +209,6 @@ S("light","Tracción","chart",f"""
   {title('El revenue se vuelve <span class="grad">más escalable</span>')}
   {stackbar([("2024",[30,0,0],"100% Live"),("2026E",[132,55,33],"40% escalable"),("2027 Target",[160,140,120],"62% escalable")],
             [("B2C Live","#4465EE"),("B2B","#17B14E"),("On-demand AI","#6D70F9")], 420)}
-  {lead('Lo importante no es solo crecer: es <b>crecer mejor</b>. Migramos de live training hacia B2B y On-demand AI, líneas de mayor margen y escalabilidad.')}
 """,
 "Lo importante no es solo crecer. Es crecer mejor. Estamos migrando de un modelo basado en live training hacia B2B y On-demand AI, líneas de mayor margen y escalabilidad.")
 
@@ -249,7 +217,6 @@ S("light","Growth","flow",f"""
   {kicker("15 · Growth")}
   {title('La <span class="grad">comunidad reduce CAC</span>')}
   {flow([("Comunidad","hot"),("Live",""),("Microlearning",""),("B2B2C","hot"),("LATAM","win")])}
-  {lead('No partimos de tráfico frío: partimos de una <b>comunidad vertical, programas validados, expertos y alianzas</b>. Ese motor nos permite activar demanda, vender y escalar.')}
 """,
 "No partimos de tráfico frío. Partimos de una comunidad vertical, programas validados, expertos y alianzas. Ese motor nos permite activar demanda, vender y escalar.")
 
@@ -257,10 +224,7 @@ S("light","Growth","flow",f"""
 S("light","Growth","cards",f"""
   {kicker("16 · Métrica norte")}
   {title('Medimos <span class="grad">adopción real</span>')}
-  {grid([
-   card("NSM de producto", '<b>Prácticas aplicadas completadas por mes.</b><br><br>No medimos videos vistos: medimos aplicación real.', tag="Producto", tone="green"),
-   card("NSM de negocio", '<b>% de revenue de líneas escalables (B2B + On-demand).</b><br><br>Mide cuánto crecemos con mejor calidad de ingresos.', tag="Negocio", tone="blue"),
-  ],2)}
+  {chiprow(["Prácticas aplicadas / mes","% revenue B2B + On-demand"])}
 """,
 "No medimos solo videos vistos. Medimos prácticas aplicadas completadas por mes. Y como negocio, medimos cuánto revenue viene de líneas escalables.")
 
@@ -268,7 +232,6 @@ S("light","Growth","cards",f"""
 S("dark","Estrategia","statement",f"""
   {kicker("17 · Diferenciación")}
   {quote('No competimos por más videos.<br>Competimos por <span class="grad">adopción tecnológica</span>.')}
-  {lead('Las plataformas horizontales venden contenido. AECODE compite con <b>profundidad vertical en construcción</b>: rutas prácticas, expertos del sector, comunidad e IA especializada.')}
 """,
 "Las plataformas horizontales venden contenido. AECODE compite con profundidad vertical en construcción: rutas prácticas, expertos del sector, comunidad e IA especializada.")
 
@@ -282,18 +245,15 @@ S("light","Estrategia","timeline",f"""
     <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2026</div><div class="tl-what"><b>B2B + On-demand AI</b>: diversificación.</div></div>
     <div class="tl-item win"><div class="tl-dot"></div><div class="tl-when">2027</div><div class="tl-what"><b>Expansión LATAM</b>: plataforma escalable.</div></div>
   </div>
-  {lead('Primero validamos demanda. Luego diversificamos ingresos. Ahora convertimos esa operación en una <b>plataforma escalable para la región</b>.')}
 """,
 "Primero validamos demanda. Luego diversificamos ingresos. Ahora estamos convirtiendo esa operación en una plataforma escalable para la región.")
 
 # 19 EQUIPO
 S("dark","Cierre","split",f"""
   {kicker("19 · Equipo")}
-  {title('Equipo completo para <span class="grad">construir, vender y escalar</span>')}
-  <div class="split">
-   <div class="split-l">{stat("12","Personas en el equipo","multidisciplinario y con resultados", suffix="+", tone="green")}</div>
-   <div class="split-r">{chiprow(["Producto","Tech","IA","Data","Comercial","Growth","Academia","Finanzas"])}{lead('No es un equipo que recién va a validar: es el equipo que <b>ya vendió y creció ×4</b>.')}</div>
-  </div>
+  {title('Un equipo que <span class="grad">ya vendió y creció ×4</span>')}
+  {stat("12","Personas · equipo multidisciplinario","", suffix="+", tone="green")}
+  {chiprow(["Producto","Tech","IA","Data","Comercial","Growth","Academia","Finanzas"])}
 """,
 "Tenemos un equipo de más de 12 personas con capacidades en producto, desarrollo, sistemas, IA, data, comercial, growth, academia y finanzas. No es un equipo que recién va a validar. Es el equipo que ya vendió y creció cuatro veces.")
 
@@ -303,7 +263,7 @@ S("dark","Cierre","ask",f"""
   {title('US$125K para <span class="grad">escalar lo validado</span>')}
   <div class="ask-grid reveal">
     <div class="ask-left">{donut([("IA + plataforma",60,"#6D70F9"),("Growth B2B2C / LATAM",30,"#17B14E"),("Microlearning",10,"#4465EE")])}</div>
-    <div class="ask-right">{bullets(["<b>60%</b> — IA + plataforma","<b>30%</b> — growth B2B2C / LATAM","<b>10%</b> — microlearning"])}{note('El capital no financia una idea: financia convertir una operación validada en plataforma escalable.')}</div>
+    <div class="ask-right">{bullets(["<b>60%</b> — IA + plataforma","<b>30%</b> — growth B2B2C / LATAM","<b>10%</b> — microlearning"])}</div>
   </div>
 """,
 "Buscamos US$125K para acelerar IA, plataforma, microlearning y B2B2C. El capital no financia una idea. Financia la conversión de una operación validada en una plataforma escalable.")
@@ -311,8 +271,7 @@ S("dark","Cierre","ask",f"""
 # 21 CIERRE
 S("dark","Cierre","close",f"""
   {LOGO}
-  {quote('La construcción se transforma cuando su gente aprende a <span class="grad">aplicar tecnología</span> en el trabajo real.')}
-  <div class="close-cta reveal">Aprende · Aplica · Construye mejor</div>
+  <div class="close-cta reveal">Aprende · Aplica · <span class="grad">Construye mejor</span></div>
   <div class="close-mail reveal">apalpan@genplusdesign.com · AECODE</div>
 """,
 "La construcción no se transforma solo con más contenido ni más herramientas. Se transforma cuando su gente aprende a aplicar tecnología en el trabajo real. AECODE existe para acelerar esa adopción tecnológica en construcción. Aprende, aplica, construye mejor.")
