@@ -10,19 +10,19 @@
 }
 .is-light{
   --bg:#F5F5F6; --bg2:#EDEBF9; --surface:#FFFFFF; --fg:#202231; --muted:#3A4065;
-  --line:#C7C2EC; --card:#FFFFFF; --card-line:#E3E0F5;
+  --line:#C7C2EC; --card:#FFFFFF; --card-line:#E6E3F4;
   --accent:#4A3AC1; --accent2:#4465EE; --accent3:#17B14E; --ink-soft:#4A3AC1;
   --grad:linear-gradient(100deg,#4465EE,#6D12E3);
   --grad3:linear-gradient(100deg,#17B14E,#4A3AC1);
-  --mesh-a:rgba(74,58,193,.10); --mesh-b:rgba(23,177,78,.10); --chip-bg:#EDEBF9;
+  --mesh-a:rgba(74,58,193,.08); --mesh-b:rgba(23,177,78,.08); --chip-bg:#EDEBF9;
 }
 .is-dark{
   --bg:#0E1121; --bg2:#1B1E3C; --surface:#13172F; --fg:#EEF3F8; --muted:#A2B4CB;
-  --line:rgba(124,126,223,.24); --card:rgba(27,30,60,.72); --card-line:rgba(124,126,223,.32);
+  --line:rgba(124,126,223,.20); --card:rgba(27,30,60,.55); --card-line:rgba(124,126,223,.26);
   --accent:#A6A7FF; --accent2:#7E97FF; --accent3:#2FD06E; --ink-soft:#C9D0F5;
   --grad:linear-gradient(100deg,#7E97FF,#9A5CFF);
   --grad3:linear-gradient(100deg,#2FD06E,#8C97DC);
-  --mesh-a:rgba(74,58,193,.46); --mesh-b:rgba(23,177,78,.20); --chip-bg:rgba(124,126,223,.16);
+  --mesh-a:rgba(74,58,193,.40); --mesh-b:rgba(23,177,78,.16); --chip-bg:rgba(124,126,223,.14);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -32,144 +32,158 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .slide{position:absolute;inset:0;display:grid;place-items:center;background:var(--bg);color:var(--fg);
   opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s var(--ease),transform .55s var(--ease-out);overflow:hidden}
 .slide::before{content:"";position:absolute;inset:-12%;z-index:0;
-  background:radial-gradient(38% 50% at 14% 12%,var(--mesh-a),transparent 70%),radial-gradient(44% 52% at 88% 90%,var(--mesh-b),transparent 72%)}
+  background:radial-gradient(40% 52% at 12% 10%,var(--mesh-a),transparent 72%),radial-gradient(46% 54% at 90% 92%,var(--mesh-b),transparent 74%)}
 .slide.active{opacity:1;visibility:visible;pointer-events:auto}
-.slide-inner{position:relative;z-index:2;width:100%;height:100%;padding:58px 72px 66px;display:flex;flex-direction:column;justify-content:center;gap:20px}
-.slide-foot{position:absolute;z-index:3;left:72px;right:72px;bottom:24px;display:flex;justify-content:space-between;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.foot-ch{font-weight:700} .foot-n{font-variant-numeric:tabular-nums;font-weight:700} .foot-n i{opacity:.4;font-style:normal;margin:0 3px}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease-out),transform .55s var(--ease-out)}
+.slide-inner{position:relative;z-index:2;width:100%;height:100%;padding:66px 88px 74px;display:flex;flex-direction:column;justify-content:center;gap:26px}
+.slide-foot{position:absolute;z-index:3;right:84px;bottom:30px;font-size:12px;letter-spacing:.18em;color:var(--muted);opacity:.7}
+.foot-n{font-variant-numeric:tabular-nums;font-weight:700} .foot-n i{opacity:.4;font-style:normal;margin:0 4px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
 .slide.active .reveal{opacity:1;transform:none}
-.kicker{font-weight:800;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:11px}
-.kicker::before{content:"";width:30px;height:3px;border-radius:3px;background:var(--grad)}
-.s-title{font-weight:800;font-size:clamp(32px,4.4vw,56px);line-height:1.02;letter-spacing:-.025em;text-wrap:balance;max-width:20ch}
-.lead{font-size:clamp(16px,1.5vw,21px);line-height:1.5;color:var(--muted);max-width:64ch}
+.s-title{font-weight:800;font-size:clamp(34px,5vw,62px);line-height:1.0;letter-spacing:-.03em;text-wrap:balance;max-width:19ch}
+.lead{font-size:clamp(16px,1.5vw,21px);line-height:1.5;color:var(--muted);max-width:62ch}
 .lead b{color:var(--fg);font-weight:700} .lead i{font-style:italic;color:var(--accent)}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .chip{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;font-size:14px;font-weight:700;padding:9px 17px;border-radius:100px;border:1px solid var(--card-line);background:var(--chip-bg);color:var(--fg)}
 .chip::before{content:"◆";color:var(--accent3);font-size:10px}
-.chiprow{display:flex;gap:10px;flex-wrap:wrap}
-.chip2{font-weight:700;font-size:15px;padding:10px 17px;border-radius:100px;background:var(--chip-bg);border:1px solid var(--card-line);color:var(--fg)}
-.vnote{font-size:13.5px;line-height:1.45;color:var(--muted);padding:12px 16px;border-radius:12px;background:var(--bg2);border:1px dashed var(--card-line)}
-.vnote b{color:var(--accent)}
+.chiprow{display:flex;gap:11px;flex-wrap:wrap}
+.chip2{font-weight:700;font-size:15px;padding:11px 18px;border-radius:100px;background:var(--chip-bg);border:1px solid var(--card-line);color:var(--fg);transition:transform .18s var(--ease),border-color .2s}
+.slide.active .chip2:hover{transform:translateY(-2px);border-color:var(--accent)}
 /* cover/close */
-.layout-cover,.layout-close{align-items:flex-start;justify-content:center;gap:20px}
-.cover-logo img{height:54px;width:auto;display:block}
+.layout-cover,.layout-close{align-items:flex-start;justify-content:center;gap:22px}
+.cover-logo img{height:56px;width:auto;display:block}
 .logo-light{display:none}.slide.is-light .logo-light{display:block} .slide.is-light .logo-dark{display:none}
-.slide-mark{position:absolute;top:30px;right:34px;height:30px;width:auto;z-index:3;opacity:.92;pointer-events:none}
+.slide-mark{position:absolute;top:34px;right:38px;height:28px;width:auto;z-index:3;opacity:.85;pointer-events:none}
 .layout-close .slide-mark{display:none}
-.close-cta{font-weight:800;font-size:clamp(22px,2.6vw,34px);color:var(--fg);letter-spacing:.02em}
-.close-cta::before{content:"";display:inline-block;width:30px;height:3px;background:var(--grad);border-radius:3px;vertical-align:middle;margin-right:14px}
-.close-mail{font-weight:700;font-size:15px;color:var(--muted);margin-top:4px}
+.close-cta{font-weight:800;font-size:clamp(24px,3vw,38px);color:var(--fg);letter-spacing:-.01em}
+.close-cta::before{content:"";display:inline-block;width:34px;height:3px;background:var(--grad);border-radius:3px;vertical-align:middle;margin-right:16px}
+.close-mail{font-weight:700;font-size:15px;color:var(--muted);margin-top:6px}
 /* statement */
-.layout-statement{gap:26px}
-.bigquote{font-weight:800;line-height:1.12;letter-spacing:-.025em;font-size:clamp(30px,4.2vw,54px);text-wrap:balance;max-width:24ch;border-left:4px solid var(--accent3);padding-left:28px}
-.big-title{font-weight:800;font-size:clamp(34px,5vw,62px);line-height:1.03;letter-spacing:-.03em;text-wrap:balance;max-width:20ch}
+.layout-statement{gap:30px}
+.bigquote{font-weight:800;line-height:1.08;letter-spacing:-.03em;font-size:clamp(33px,5vw,60px);text-wrap:balance;max-width:22ch;border-left:3px solid var(--accent3);padding-left:30px}
 /* eqs */
-.eqs{display:flex;flex-direction:column;gap:13px}
-.eq{display:flex;align-items:center;gap:16px;font-weight:800;font-size:clamp(20px,2.6vw,32px)}
+.eqs{display:flex;flex-direction:column;gap:15px}
+.eq{display:flex;align-items:center;gap:18px;font-weight:800;font-size:clamp(21px,2.8vw,34px)}
 .eq span{color:var(--fg)} .eq i{font-style:normal;font-weight:800;font-size:1.05em}
 .eq-neq i{color:var(--muted)} .eq-eq i{color:var(--accent3)} .eq-eq span:last-child{color:var(--accent3)}
-/* split */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;margin-top:2px}
-.split-l,.split-r{display:flex;flex-direction:column;gap:14px}
 /* stat */
-.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.stat{display:flex;flex-direction:column;gap:3px;padding:18px 20px;border-radius:16px;background:var(--card);border:1px solid var(--card-line)}
-.stat-num{font-weight:800;line-height:1;font-size:clamp(34px,4.4vw,56px);letter-spacing:-.02em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:1px;color:var(--accent)}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.statrow-3{grid-template-columns:repeat(3,1fr)}
+.stat{display:flex;flex-direction:column;gap:4px;padding:18px 20px;border-radius:16px;background:var(--card);border:1px solid var(--card-line);transition:transform .2s var(--ease),box-shadow .25s,border-color .25s}
+.slide.active .stat:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 16px 34px rgba(8,10,30,.2)}
+.statrow.bare .stat{background:none;border:none;padding:4px 0}
+.statrow.bare .stat:hover{transform:none;box-shadow:none;border:none}
+.stat-num{font-weight:800;line-height:1;font-size:clamp(38px,5vw,64px);letter-spacing:-.03em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:1px;color:var(--accent)}
+.statrow.bare .stat-num{font-size:clamp(48px,6.6vw,86px)}
 .stat-green .stat-num{color:var(--accent3)} .stat-blue .stat-num{color:var(--accent2)}
-.stat-pre,.stat-suf{font-size:.5em;font-weight:700}
+.stat-pre,.stat-suf{font-size:.48em;font-weight:700}
 .stat-label{font-size:15px;font-weight:700;color:var(--fg);line-height:1.25}
+.statrow.bare .stat-label{color:var(--muted);font-weight:600;font-size:14.5px}
 .stat-sub{font-size:13px;color:var(--muted);line-height:1.3}
-.statrow[style] .stat-num{font-size:clamp(40px,5.4vw,68px)}
 /* cards */
-.grid{display:grid;gap:14px}
-.grid-1{grid-template-columns:1fr}.grid-2{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}
-.card{position:relative;padding:20px 20px 18px;border-radius:16px;background:var(--card);border:1px solid var(--card-line);display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.grid{display:grid;gap:16px}.grid-3{grid-template-columns:repeat(3,1fr)}
+.card{position:relative;padding:24px 22px;border-radius:18px;background:var(--card);border:1px solid var(--card-line);display:flex;flex-direction:column;gap:9px;overflow:hidden;transition:transform .2s var(--ease),box-shadow .25s,border-color .25s}
+.slide.active .card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 18px 38px rgba(8,10,30,.22)}
 .card::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--accent)}
 .card-green::before{background:var(--accent3)} .card-blue::before{background:var(--accent2)}
-.card-num{font-weight:800;font-size:22px;color:var(--accent)}
-.card-tag{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-.card-green .card-tag,.card-green .card-num{color:var(--accent3)} .card-blue .card-tag,.card-blue .card-num{color:var(--accent2)}
-.card-head{font-weight:800;font-size:19px;line-height:1.2;color:var(--fg)}
-.card-body{font-size:15px;line-height:1.45;color:var(--muted)} .card-body b{color:var(--fg)}
-.cards-sm .card-head{font-size:16.5px} .cards-sm .card-body{font-size:13.5px}
+.card-num{font-weight:800;font-size:26px;color:var(--accent)}
+.card-green .card-num{color:var(--accent3)} .card-blue .card-num{color:var(--accent2)}
+.card-head{font-weight:800;font-size:20px;line-height:1.18;color:var(--fg)}
+.card-body{font-size:15.5px;line-height:1.45;color:var(--muted)} .card-body b{color:var(--fg)}
 /* bullets */
-.bullets{list-style:none;display:flex;flex-direction:column;gap:9px}
-.bullets li{position:relative;padding-left:22px;font-size:15.5px;line-height:1.4;color:var(--muted)}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:11px}
+.bullets li{position:relative;padding-left:24px;font-size:16px;line-height:1.4;color:var(--muted)}
 .bullets li b{color:var(--fg);font-weight:700}
-.bullets li::before{content:"";position:absolute;left:2px;top:7px;width:8px;height:8px;border-radius:2px;background:var(--accent3);transform:rotate(45deg)}
+.bullets li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;border-radius:2px;background:var(--accent3);transform:rotate(45deg)}
 /* flow */
-.flow{display:flex;flex-wrap:wrap;align-items:center;gap:9px}
-.flow-step{font-weight:700;font-size:16px;padding:12px 18px;border-radius:12px;background:var(--card);border:1px solid var(--card-line);color:var(--fg)}
-.flow-step.hot{border-color:var(--accent2);color:var(--accent2);box-shadow:0 0 22px rgba(68,101,238,.18)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.flow-step{font-weight:700;font-size:16.5px;padding:13px 19px;border-radius:13px;background:var(--card);border:1px solid var(--card-line);color:var(--fg);transition:transform .18s var(--ease),border-color .2s}
+.slide.active .flow-step:hover{transform:translateY(-3px);border-color:var(--accent2)}
+.flow-step.hot{border-color:var(--accent2);color:var(--accent2);box-shadow:0 0 24px rgba(68,101,238,.16)}
 .flow-step.win{background:var(--grad3);color:#fff;border:none}
 .flow-arr{color:var(--accent);font-weight:800;font-size:18px;font-style:normal}
 /* barchart */
-.barchart{display:flex;flex-direction:column;gap:13px;width:100%}
-.bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;font-size:14.5px}
+.barchart{display:flex;flex-direction:column;gap:15px;width:100%}
+.bar{cursor:default}
+.bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;font-size:15px}
 .bar-top span{color:var(--fg);font-weight:600} .bar-top b{color:var(--accent);font-weight:800;font-variant-numeric:tabular-nums}
-.bar-track{height:12px;border-radius:100px;background:var(--bg2);overflow:hidden;border:1px solid var(--card-line)}
-.bar-track i{display:block;height:100%;width:var(--w);border-radius:100px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease-out)}
+.bar-track{height:13px;border-radius:100px;background:var(--bg2);overflow:hidden;border:1px solid var(--card-line)}
+.bar-track i{display:block;height:100%;width:var(--w);border-radius:100px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease-out),filter .2s}
 .slide.active .bar-track i{transform:scaleX(1)}
+.slide.active .bar:hover .bar-track i{filter:brightness(1.14)}
 .bar-green .bar-top b{color:var(--accent3)} .bar-green .bar-track i{background:linear-gradient(100deg,var(--green),#43d98f)}
 .bar-blue .bar-top b{color:var(--accent2)} .bar-blue .bar-track i{background:linear-gradient(100deg,var(--blue),#6f8cff)}
 .bar-ink .bar-top b{color:var(--muted)} .bar-ink .bar-track i{background:var(--muted);opacity:.7}
 /* stackbar */
-.stackbar{display:flex;flex-direction:column;gap:16px;width:100%}
-.sb-cols{display:flex;align-items:flex-end;justify-content:space-around;gap:26px;height:236px;padding:0 6px;border-bottom:2px solid var(--card-line)}
-.sb-col{flex:1;max-width:130px;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end}
-.sb-bar{width:66px;border-radius:8px 8px 0 0;overflow:hidden;display:flex;flex-direction:column-reverse;transform:scaleY(0);transform-origin:bottom;transition:transform .85s var(--ease-out)}
+.stackbar{display:flex;flex-direction:column;gap:18px;width:100%}
+.sb-cols{display:flex;align-items:flex-end;justify-content:space-around;gap:30px;height:248px;padding:0 6px;border-bottom:2px solid var(--card-line)}
+.sb-col{flex:1;max-width:132px;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.sb-bar{width:70px;border-radius:9px 9px 0 0;overflow:hidden;display:flex;flex-direction:column-reverse;transform:scaleY(0);transform-origin:bottom;transition:transform .85s var(--ease-out)}
 .slide.active .sb-bar{transform:scaleY(1)}
-.sb-seg{width:100%;display:block} .sb-tot{font-weight:800;font-size:15px;color:var(--fg)} .sb-lab{font-size:12.5px;font-weight:700;color:var(--muted)}
-.sb-legend{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-.sb-leg{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--muted);font-weight:600} .sb-leg i{width:13px;height:13px;border-radius:4px}
+.sb-seg{width:100%;display:block;cursor:pointer;transition:filter .2s}
+.slide.active .sb-bar:hover .sb-seg{filter:brightness(.55)} .slide.active .sb-seg:hover{filter:brightness(1.2)}
+.sb-tot{font-weight:800;font-size:16px;color:var(--fg)} .sb-lab{font-size:13px;font-weight:700;color:var(--muted)}
+.sb-legend{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
+.sb-leg{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--muted);font-weight:600} .sb-leg i{width:13px;height:13px;border-radius:4px}
 /* tss */
-.tss{display:flex;gap:26px;align-items:center}
-.tss-rings{position:relative;width:230px;height:230px;flex:none}
-.ring{position:absolute;border-radius:50%;display:grid;place-items:start center;padding-top:10px;font-weight:800;font-size:13px;left:50%;top:50%;transform:translate(-50%,-50%)}
+.tss{display:flex;gap:30px;align-items:center}
+.tss-rings{position:relative;width:236px;height:236px;flex:none}
+.ring{position:absolute;border-radius:50%;display:grid;place-items:start center;padding-top:11px;font-weight:800;font-size:13px;left:50%;top:50%;transform:translate(-50%,-50%);cursor:pointer;transition:filter .2s}
 .ring span{color:#fff;letter-spacing:.1em}
-.ring.r0{width:230px;height:230px;background:rgba(74,58,193,.20);border:1px solid var(--violet)}
-.ring.r1{width:158px;height:158px;background:rgba(68,101,238,.28);border:1px solid var(--blue)}
-.ring.r2{width:88px;height:88px;background:var(--green);border:1px solid var(--green);place-items:center;padding:0}
+.slide.active .ring:hover{filter:brightness(1.18) saturate(1.2)}
+.ring.r0{width:236px;height:236px;background:rgba(74,58,193,.20);border:1px solid var(--violet)}
+.ring.r1{width:162px;height:162px;background:rgba(68,101,238,.30);border:1px solid var(--blue)}
+.ring.r2{width:90px;height:90px;background:var(--green);border:1px solid var(--green);place-items:center;padding:0}
 .is-light .ring.r0 span,.is-light .ring.r1 span{color:#2a2470}
-.tss-legend{display:flex;flex-direction:column;gap:12px}
-.tss-leg{display:flex;gap:11px;align-items:flex-start;font-size:14px}
+.tss-legend{display:flex;flex-direction:column;gap:13px}
+.tss-leg{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;cursor:default;transition:transform .18s var(--ease)}
+.slide.active .tss-leg:hover{transform:translateX(4px)}
 .tss-leg .dot{width:14px;height:14px;border-radius:4px;margin-top:3px;flex:none}
 .tss-leg .d0{background:var(--violet)} .tss-leg .d1{background:var(--blue)} .tss-leg .d2{background:var(--green)}
 .tss-leg b{color:var(--fg);font-weight:800} .tss-leg small{display:block;color:var(--muted);font-size:12.5px}
-/* donut */
-.donut-wrap{display:flex;align-items:center;gap:24px}
-.donut{width:184px;height:184px;border-radius:50%;position:relative;flex:none}
-.donut-hole{position:absolute;inset:30px;border-radius:50%;background:var(--bg)}
-.donut-legend{display:flex;flex-direction:column;gap:11px}
-.dn-leg{display:flex;align-items:center;gap:9px;font-size:14.5px;color:var(--muted)} .dn-leg span{width:13px;height:13px;border-radius:4px;flex:none} .dn-leg b{color:var(--fg);font-weight:800}
+/* donut SVG interactivo */
+.donut-wrap{display:flex;align-items:center;gap:28px}
+.donut-svg{position:relative;width:196px;height:196px;flex:none}
+.donut-svg svg{width:100%;height:100%;overflow:visible}
+.dn-arc{transition:stroke-width .22s var(--ease),opacity .22s;cursor:pointer}
+.slide.active .donut-svg:hover .dn-arc{opacity:.4}
+.slide.active .donut-svg .dn-arc:hover{opacity:1;stroke-width:21}
+.dn-center{position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none;gap:2px}
+.dn-c-pct{font-weight:800;font-size:34px;color:var(--fg);font-variant-numeric:tabular-nums;line-height:1}
+.dn-c-lab{font-size:12.5px;color:var(--muted);max-width:96px;line-height:1.2;font-weight:600}
+.donut-legend{display:flex;flex-direction:column;gap:13px}
+.dn-leg{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted);cursor:default;transition:transform .18s var(--ease)}
+.slide.active .dn-leg:hover{transform:translateX(4px)}
+.dn-leg span{width:14px;height:14px;border-radius:4px;flex:none} .dn-leg b{color:var(--fg);font-weight:800}
 /* demo */
-.layout-demo{gap:16px}
-.demo-frame{border-radius:16px;overflow:hidden;border:1px solid var(--card-line);background:var(--bg2);box-shadow:0 26px 60px rgba(0,0,0,.32)}
-.demo-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;background:var(--card);border-bottom:1px solid var(--card-line)}
+.layout-demo{gap:18px}
+.demo-frame{border-radius:18px;overflow:hidden;border:1px solid var(--card-line);background:var(--bg2);box-shadow:0 28px 64px rgba(0,0,0,.32)}
+.demo-bar{display:flex;align-items:center;gap:7px;padding:12px 17px;background:var(--card);border-bottom:1px solid var(--card-line)}
 .demo-bar>span{width:11px;height:11px;border-radius:50%;background:var(--line)}
 .demo-url{margin-left:14px;font-size:13px;color:var(--muted);background:var(--bg);padding:5px 14px;border-radius:6px;flex:1;max-width:280px}
-.demo-body{padding:26px 22px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.demo-body{padding:30px 24px;display:flex;flex-direction:column;gap:16px;align-items:center}
 .demo-note{font-size:13.5px;color:var(--muted);font-style:italic}
 /* timeline */
-.tl{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin:14px 0}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin:16px 0}
 .tl::before{content:"";position:absolute;left:6%;right:6%;top:9px;height:2px;background:var(--line)}
-.tl-item{position:relative;padding:0 13px;display:flex;flex-direction:column;gap:8px}
-.tl-dot{width:18px;height:18px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg),0 0 18px rgba(74,58,193,.4);z-index:2}
+.tl-item{position:relative;padding:0 14px;display:flex;flex-direction:column;gap:9px}
+.tl-dot{width:18px;height:18px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg),0 0 18px rgba(74,58,193,.4);z-index:2;transition:transform .2s var(--ease)}
+.slide.active .tl-item:hover .tl-dot{transform:scale(1.25)}
 .tl-item.win .tl-dot{background:var(--accent3);box-shadow:0 0 0 5px var(--bg),0 0 18px rgba(38,185,111,.45)}
-.tl-when{font-weight:800;font-size:18px;color:var(--accent)} .tl-item.win .tl-when{color:var(--accent3)}
-.tl-what{font-size:14.5px;line-height:1.4;color:var(--muted)} .tl-what b{color:var(--fg)}
+.tl-when{font-weight:800;font-size:19px;color:var(--accent)} .tl-item.win .tl-when{color:var(--accent3)}
+.tl-what{font-size:15px;line-height:1.4;color:var(--muted)} .tl-what b{color:var(--fg)}
 /* ask */
-.layout-ask{gap:16px}
-.ask-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;align-items:center;margin-top:4px}
-.ask-left{display:flex;justify-content:center}.ask-right{display:flex;flex-direction:column;gap:14px}
+.layout-ask{gap:18px}
+.ask-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;margin-top:6px}
+.ask-left{display:flex;justify-content:center}.ask-right{display:flex;flex-direction:column;gap:15px}
+/* tooltip */
+.tip{position:fixed;z-index:75;pointer-events:none;transform:translate(-50%,-100%);background:rgba(14,17,33,.97);color:#eef1ff;border:1px solid rgba(124,126,223,.55);padding:8px 13px;border-radius:10px;font-size:13.5px;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .16s;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.tip.show{opacity:1}
 /* chrome */
 .chrome{position:fixed;inset:0;z-index:50;pointer-events:none}
-.ctrl{position:absolute;bottom:20px;right:24px;display:flex;gap:8px;pointer-events:auto}
-.ctrl button{width:39px;height:39px;border-radius:11px;border:1px solid rgba(255,255,255,.16);background:rgba(20,26,61,.62);color:#fff;backdrop-filter:blur(10px);cursor:pointer;font-size:15px;display:grid;place-items:center;transition:transform .15s,background .2s}
+.ctrl{position:absolute;bottom:22px;right:26px;display:flex;gap:8px;pointer-events:auto}
+.ctrl button{width:39px;height:39px;border-radius:11px;border:1px solid rgba(255,255,255,.16);background:rgba(20,26,61,.6);color:#fff;backdrop-filter:blur(10px);cursor:pointer;font-size:15px;display:grid;place-items:center;transition:transform .15s,background .2s}
 .ctrl button:hover{background:rgba(74,58,193,.7)} .ctrl button:active{transform:scale(.92)}
 .ctrl button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
-.counter{position:absolute;bottom:28px;left:24px;font-weight:700;font-size:13px;letter-spacing:.1em;color:#fff;opacity:.6;font-variant-numeric:tabular-nums;background:rgba(20,26,61,.5);padding:7px 13px;border-radius:9px;backdrop-filter:blur(8px)}
 .arrow-zone{position:fixed;top:0;bottom:0;width:13%;z-index:40;cursor:pointer}
 .arrow-zone.left{left:0}.arrow-zone.right{right:0}
 /* notas / guion */
@@ -187,14 +201,10 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 .toc-item:hover{transform:translateY(-3px);border-color:#43d98f}
 .toc-n{font-weight:800;font-size:16px;color:#43d98f} .toc-t{font-size:12px;color:#a9b2da;line-height:1.25}
 .toc-close{position:absolute;top:26px;right:36px;font-size:22px;background:none;border:none;color:#fff;cursor:pointer}
-/* interactividad */
-.card,.stat{transition:transform .2s var(--ease),box-shadow .25s,border-color .25s}
-.slide.active .card:hover,.slide.active .stat:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 16px 34px rgba(8,10,30,.22)}
-.flow-step{transition:transform .18s var(--ease),border-color .2s}
-.slide.active .flow-step:hover{transform:translateY(-2px);border-color:var(--accent2)}
-.segbar{position:absolute;top:0;left:0;right:0;height:6px;display:flex;gap:2px;pointer-events:auto}
-.seg{flex:var(--c) 1 0;height:5px;align-self:flex-start;background:rgba(140,151,220,.24);position:relative;cursor:pointer;transition:height .2s,background .25s}
-.seg:hover,.seg.cur{height:8px;background:rgba(140,151,220,.4)}
+/* segbar */
+.segbar{position:absolute;top:0;left:0;right:0;height:5px;display:flex;gap:2px;pointer-events:auto}
+.seg{flex:var(--c) 1 0;height:4px;align-self:flex-start;background:rgba(140,151,220,.22);position:relative;cursor:pointer;transition:height .2s,background .25s}
+.seg:hover,.seg.cur{height:7px;background:rgba(140,151,220,.38)}
 .seg i{position:absolute;left:0;top:0;height:100%;width:var(--f,0%);background:linear-gradient(90deg,#4465EE,#17B14E);transition:width .45s var(--ease)}
 .seg .lab{position:absolute;top:12px;left:0;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#e7eaff;background:rgba(14,17,33,.94);border:1px solid rgba(124,126,223,.4);padding:4px 9px;border-radius:7px;white-space:nowrap;opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s;pointer-events:none;z-index:6}
 .seg:hover .lab{opacity:1;transform:none}
@@ -203,20 +213,21 @@ body{background:#05060f;color:#fff;overflow:hidden;font-family:Manrope,"Plus Jak
 body.mobile .deck{place-items:stretch}
 body.mobile .stage{width:100vw;height:100dvh;transform:none!important}
 body.mobile .slide{display:block;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-body.mobile .slide-inner{position:static;height:auto;min-height:100%;justify-content:flex-start;padding:56px clamp(18px,5.5vw,30px) 82px;gap:clamp(14px,3.6vw,20px)}
-body.mobile .slide-foot{left:clamp(18px,5.5vw,30px);right:clamp(18px,5.5vw,30px);bottom:18px}
+body.mobile .slide-inner{position:static;height:auto;min-height:100%;justify-content:flex-start;padding:54px clamp(18px,5.5vw,30px) 82px;gap:clamp(16px,4vw,24px)}
+body.mobile .slide-foot{right:clamp(18px,5.5vw,30px);bottom:18px}
 body.mobile .slide-mark{top:18px;right:18px;height:24px}
-body.mobile .split,body.mobile .ask-grid,body.mobile .statrow,body.mobile .grid-2,body.mobile .grid-3,body.mobile .tss,body.mobile .donut-wrap{display:flex;flex-direction:column;gap:13px}
-body.mobile .statrow[style]{display:grid;grid-template-columns:1fr 1fr!important}
-body.mobile .s-title{font-size:clamp(25px,7vw,36px);max-width:none}
-body.mobile .big-title,body.mobile .bigquote{font-size:clamp(26px,7.2vw,40px);max-width:none}
+body.mobile .ask-grid,body.mobile .grid-3,body.mobile .tss,body.mobile .donut-wrap{display:flex;flex-direction:column;gap:16px}
+body.mobile .statrow,body.mobile .statrow-3{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+body.mobile .s-title{font-size:clamp(26px,7.4vw,38px);max-width:none}
+body.mobile .bigquote{font-size:clamp(27px,7.6vw,42px);max-width:none}
 body.mobile .lead{font-size:clamp(15px,4vw,18px);max-width:none}
-body.mobile .eq{font-size:clamp(18px,5vw,26px)}
+body.mobile .eq{font-size:clamp(19px,5.2vw,28px)}
+body.mobile .statrow.bare .stat-num{font-size:clamp(40px,11vw,60px)}
 body.mobile .tss-rings{margin:0 auto}
-body.mobile .stackbar{overflow-x:auto} body.mobile .sb-cols{gap:14px;height:200px} body.mobile .sb-bar{width:48px}
+body.mobile .donut-svg{width:160px;height:160px}
+body.mobile .stackbar{overflow-x:auto} body.mobile .sb-cols{gap:16px;height:210px} body.mobile .sb-bar{width:50px}
 body.mobile .ctrl{bottom:14px;right:11px;gap:7px} body.mobile .ctrl button{width:42px;height:42px}
-body.mobile .counter{bottom:18px;left:11px} body.mobile .arrow-zone{display:none}
-body.mobile .donut{width:154px;height:154px} body.mobile .donut-hole{inset:26px}
+body.mobile .arrow-zone{display:none}
 body.mobile .toc{padding:48px 22px} body.mobile .toc-grid{grid-template-columns:repeat(2,1fr)}
 body.mobile .notes{max-height:55vh}
 @media (prefers-reduced-motion:reduce){
@@ -226,103 +237,87 @@ body.mobile .notes{max-height:55vh}
   .slide.active .bar-track i{transform:scaleX(1)} .slide.active .sb-bar{transform:scaleY(1)}
 }
 </style></head><body>
-<div class="deck"><div class="stage"><section class="slide" data-base="dark" data-ch="Hook" data-notes="La tecnología avanza más rápido que la capacidad de las personas para adoptarla. Una cosa es conocer una herramienta. Otra cosa es adoptarla en el trabajo real. Y en construcción, esa diferencia impacta directamente en productividad. AECODE nace para cerrar esa brecha." data-idx="0"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">01 · Hook</div>
+<div class="deck"><div class="stage"><section class="slide" data-base="dark" data-ch="Hook" data-notes="La tecnología avanza más rápido que la capacidad de las personas para adoptarla. Una cosa es conocer una herramienta. Otra es adoptarla en el trabajo real. Y en construcción, esa diferencia impacta directamente en productividad. AECODE nace para cerrar esa brecha." data-idx="0"><div class="slide-inner layout-statement">
   <h2 class="s-title reveal">La tecnología avanza <span class="grad">más rápido</span> que nuestra capacidad de adoptarla.</h2>
   <div class="eqs reveal"><div class="eq eq-neq"><span>Herramientas</span><i>≠</i><span>adopción</span></div><div class="eq eq-neq"><span>Aprender</span><i>≠</i><span>aplicar</span></div><div class="eq eq-eq"><span>Adopción</span><i>=</i><span>productividad</span></div></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Hook</span><span class="foot-n">01<i>/</i>21</span></div></section>
-<section class="slide" data-base="dark" data-ch="Oportunidad" data-notes="La construcción no se detiene. Se seguirán construyendo viviendas, hospitales, carreteras, puentes e infraestructura. Pero hay una paradoja: es una de las industrias más grandes del mundo y, al mismo tiempo, una de las que más sufre por retrasos, sobrecostos y baja productividad. Ahí está la oportunidad: formar mejor al talento que construye." data-idx="1"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">02 · Oportunidad</div>
-  <h2 class="s-title reveal">Construcción mueve el mundo, pero <span class="grad">pierde productividad</span>.</h2>
-  <div class="statrow" style="grid-template-columns:1fr 1fr">
-    <div class="stat reveal stat-violet"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="280">280</span><span class="stat-suf">M+</span></div><div class="stat-label">Personas trabajan en construcción</div></div>
-    <div class="stat reveal stat-green"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="92">92</span><span class="stat-suf">%</span></div><div class="stat-label">De proyectos con sobrecostos o retrasos</div></div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">01<i>/</i>21</span></div></section>
+<section class="slide" data-base="dark" data-ch="Oportunidad" data-notes="La construcción no se detiene. Se seguirán construyendo viviendas, hospitales, carreteras, puentes e infraestructura. Más de 280 millones de personas trabajan en construcción en el mundo. Pero este sector sigue enfrentando retrasos, sobrecostos y baja productividad. Además, las habilidades están cambiando rápido. La oportunidad está en formar talento capaz de aprender, aplicar y adaptarse a la velocidad que el sector exige." data-idx="1"><div class="slide-inner layout-statement">
+  <h2 class="s-title reveal">El sector que <span class="grad">mueve el mundo</span> — y pierde productividad</h2>
+  <div class="statrow statrow-3 bare">
+    <div class="stat reveal stat-violet"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="280">280</span><span class="stat-suf">M+</span></div><div class="stat-label">Personas en construcción</div></div>
+    <div class="stat reveal stat-green"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="92">92</span><span class="stat-suf">%</span></div><div class="stat-label">Proyectos con sobrecostos o retrasos</div></div>
+    <div class="stat reveal stat-blue"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="44">44</span><span class="stat-suf">%</span></div><div class="stat-label">Habilidades cambian en 5 años</div></div>
   </div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Oportunidad</span><span class="foot-n">02<i>/</i>21</span></div></section>
-<section class="slide" data-base="dark" data-ch="Por qué ahora" data-notes="La construcción está entrando a una etapa donde la digitalización BIM, la automatización y la IA ya no son innovación lejana. Empiezan a ser condiciones para competir. El reto ya no es solo tener herramientas. Es que los equipos sepan usarlas para coordinar mejor, ahorrar tiempo y reducir errores." data-idx="2"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">03 · Por qué ahora</div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">02<i>/</i>21</span></div></section>
+<section class="slide" data-base="dark" data-ch="Por qué ahora" data-notes="La construcción está entrando a una nueva etapa digital. Digitalización BIM, automatización, IA y herramientas digitales ya no son una ventaja futura: empiezan a ser condición para competir. El reto no es solo tener herramientas. El reto es que las personas sepan usarlas para coordinar mejor, ahorrar tiempo, reducir errores y tomar mejores decisiones." data-idx="2"><div class="slide-inner layout-statement">
   <blockquote class="bigquote reveal">Adoptar tecnología <span class="grad">ya no es opcional</span>.</blockquote>
   <div class="flow reveal"><div class="flow-step ">Digitalización BIM</div><i class="flow-arr">→</i><div class="flow-step ">Automatización</div><i class="flow-arr">→</i><div class="flow-step hot">IA aplicada</div><i class="flow-arr">→</i><div class="flow-step win">Productividad</div></div>
-  <span class="chip reveal">44% de las habilidades cambiarán en los próximos 5 años</span>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Por qué ahora</span><span class="foot-n">03<i>/</i>21</span></div></section>
-<section class="slide" data-base="light" data-ch="Problema central" data-notes="Hoy no faltan cursos, tutoriales, webinars, comunidades ni respuestas con IA. El problema es que el aprendizaje está fragmentado. El profesional no sabe qué aprender primero, qué realmente le sirve para crecer o cómo aplicarlo en su trabajo. Y la empresa capacita, pero no siempre logra que esa capacitación cambie la forma de trabajar." data-idx="3"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">04 · Problema central</div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">03<i>/</i>21</span></div></section>
+<section class="slide" data-base="light" data-ch="Problema central" data-notes="Hoy no faltan cursos, tutoriales, webinars, comunidades ni respuestas con IA. El problema es que el aprendizaje está fragmentado. El profesional no siempre sabe qué aprender primero, qué le sirve realmente para crecer o cómo aplicarlo en su trabajo. Y la empresa capacita, pero no siempre logra que esa capacitación cambie la forma de trabajar." data-idx="3"><div class="slide-inner layout-statement">
   <h2 class="s-title reveal">No falta contenido.<br>Falta una <span class="grad">ruta clara</span> para aplicar.</h2>
   <div class="chiprow reveal"><span class="chip2">Cursos infinitos</span><span class="chip2">Poca claridad</span><span class="chip2">Poca práctica</span><span class="chip2">Baja adopción</span></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Problema central</span><span class="foot-n">04<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">04<i>/</i>21</span></div></section>
 <section class="slide" data-base="light" data-ch="Dolor real" data-notes="El dolor se ve en tres niveles. Para el profesional: invierte tiempo y dinero, pero no siempre mejora su trabajo, salario o empleabilidad. Para la empresa: invierte en capacitación y tecnología, pero no siempre cambia el comportamiento del equipo. Y para el proyecto: esa brecha se convierte en errores, retrabajo, baja coordinación y pérdida de productividad." data-idx="4"><div class="slide-inner layout-cards">
-  <div class="kicker reveal">05 · Dolor real</div>
   <h2 class="s-title reveal">Cuando el aprendizaje no se aplica, <span class="grad">todos pagan</span> el costo.</h2>
-  <div class="grid grid-3 "><div class="card reveal card-violet"><div class="card-num">01</div><div class="card-head">Profesional</div><div class="card-body">Aprende, pero no demuestra mejora.</div></div><div class="card reveal card-green"><div class="card-num">02</div><div class="card-head">Empresa</div><div class="card-body">Capacita, pero no logra adopción.</div></div><div class="card reveal card-blue"><div class="card-num">03</div><div class="card-head">Proyecto</div><div class="card-body">Errores, retrabajo y baja productividad.</div></div></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Dolor real</span><span class="foot-n">05<i>/</i>21</span></div></section>
-<section class="slide" data-base="dark" data-ch="Solución" data-notes="AECODE es una plataforma de aprendizaje para arquitectura, ingeniería y construcción. Ayudamos a profesionales y empresas a aprender y aplicar digitalización BIM, automatización, IA y herramientas digitales en el trabajo real. No vendemos solo cursos. Convertimos aprendizaje en adopción tecnológica." data-idx="5"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">06 · Solución</div>
+  <div class="grid grid-3 "><div class="card reveal card-violet"><div class="card-num">01</div><div class="card-head">Profesional</div><div class="card-body">Aprende, pero no mejora ni demuestra.</div></div><div class="card reveal card-green"><div class="card-num">02</div><div class="card-head">Empresa</div><div class="card-body">Capacita, pero no logra adopción.</div></div><div class="card reveal card-blue"><div class="card-num">03</div><div class="card-head">Proyecto</div><div class="card-body">Errores, retrabajo y baja productividad.</div></div></div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">05<i>/</i>21</span></div></section>
+<section class="slide" data-base="dark" data-ch="Solución" data-notes="AECODE es una plataforma de aprendizaje para arquitectura, ingeniería y construcción. Ayudamos a profesionales y empresas a aprender y aplicar digitalización BIM, automatización, IA y herramientas digitales en el trabajo real. No vendemos solo cursos. Convertimos aprendizaje en adopción tecnológica y productividad." data-idx="5"><div class="slide-inner layout-statement">
   <h2 class="s-title reveal">AECODE acelera la <span class="grad">adopción tecnológica</span> en construcción.</h2>
   <div class="flow reveal"><div class="flow-step ">Aprende tecnología</div><i class="flow-arr">→</i><div class="flow-step hot">Aplícala en proyectos reales</div><i class="flow-arr">→</i><div class="flow-step win">Construye mejor</div></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Solución</span><span class="foot-n">06<i>/</i>21</span></div></section>
-<section class="slide" data-base="light" data-ch="Producto / Video Demo" data-notes="El usuario identifica su nivel, elige un rol o especialidad y avanza por una ruta práctica. Puede aprender BIM, planificación, costos, coordinación, gestión de obra, automatización o IA aplicada. Aprende con cápsulas cortas, practica con casos reales y genera evidencia de avance." data-idx="6"><div class="slide-inner layout-demo">
-  <div class="kicker reveal">07 · Producto / Video Demo</div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">06<i>/</i>21</span></div></section>
+<section class="slide" data-base="light" data-ch="Producto / Video Demo" data-notes="El usuario identifica su nivel, elige un rol o especialidad y avanza por una ruta práctica. Puede aprender BIM, planificación, costos, coordinación, gestión de obra, automatización o IA aplicada. Aprende con cápsulas cortas, practica con casos reales y genera evidencia de avance. Así pasamos de aprendizaje disperso a progreso guiado." data-idx="6"><div class="slide-inner layout-demo">
   <h2 class="s-title reveal">Rutas prácticas <span class="grad">por rol</span></h2>
   <div class="demo-frame reveal"><div class="demo-bar"><span></span><span></span><span></span><span class="demo-url">app.aecode.io / dashboard</span></div><div class="demo-body"><div class="flow reveal"><div class="flow-step ">Diagnóstico</div><i class="flow-arr">→</i><div class="flow-step ">Ruta</div><i class="flow-arr">→</i><div class="flow-step ">Microlearning</div><i class="flow-arr">→</i><div class="flow-step hot">Práctica</div><i class="flow-arr">→</i><div class="flow-step hot">Evidencia</div><i class="flow-arr">→</i><div class="flow-step win">Progreso</div></div><p class="demo-note">▶ Reemplazar por el video / GIF del flujo real</p></div></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Producto / Video Demo</span><span class="foot-n">07<i>/</i>21</span></div></section>
-<section class="slide" data-base="dark" data-ch="Innovación tecnológica" data-notes="Nuestra innovación no es poner un chatbot encima de una plataforma. Estamos construyendo un motor de IA adaptativa alimentado por contenido validado y criterio de más de 200 expertos del sector. El sistema diagnostica, recomienda rutas, entiende la necesidad del usuario y lo guía con un enfoque multiagente hacia habilidades aplicables." data-idx="7"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">08 · Innovación tecnológica</div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">07<i>/</i>21</span></div></section>
+<section class="slide" data-base="dark" data-ch="Innovación tecnológica" data-notes="Nuestra innovación no es poner un chatbot encima de una plataforma. Estamos construyendo un motor de IA adaptativa alimentado por contenido validado y criterio de más de 200 expertos del sector. El sistema diagnostica, recomienda rutas, entiende la necesidad del usuario y lo guía hacia habilidades aplicables." data-idx="7"><div class="slide-inner layout-statement">
   <h2 class="s-title reveal">AI Coach entrenado con <span class="grad">criterio experto AEC</span></h2>
   <div class="chiprow reveal"><span class="chip2">+200 expertos</span><span class="chip2">Diagnóstico adaptativo</span><span class="chip2">Rutas personalizadas</span><span class="chip2">Sistema multiagente</span></div>
   <span class="chip reveal">No es un chatbot encima de cursos: es un motor de IA adaptativa</span>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Innovación tecnológica</span><span class="foot-n">08<i>/</i>21</span></div></section>
-<section class="slide" data-base="light" data-ch="Mercado" data-notes="Nuestro mercado inicial es la formación digital especializada para construcción en Latinoamérica. Estimamos un TAM de 360 millones de dólares, un SAM de 87.5 millones y una meta de capturar 2.5 millones en tres años. Es menos del 3% del mercado servible." data-idx="8"><div class="slide-inner layout-tss">
-  <div class="kicker reveal">09 · Mercado</div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">08<i>/</i>21</span></div></section>
+<section class="slide" data-base="light" data-ch="Mercado" data-notes="Nuestro mercado inicial es formación digital especializada para construcción en Latinoamérica. Estimamos un TAM de 360 millones de dólares, un SAM de 87.5 millones y una meta de capturar 2.5 millones en tres años. Eso representa menos del 3% del mercado servible." data-idx="8"><div class="slide-inner layout-tss">
   <h2 class="s-title reveal">Formación digital para <span class="grad">construcción en LATAM</span></h2>
   <div class="tss reveal"><div class="tss-rings">
-        <div class="ring r0"><span>TAM</span></div><div class="ring r1"><span>SAM</span></div>
-        <div class="ring r2"><span>SOM</span></div></div>
-      <div class="tss-legend"><div class="tss-leg reveal"><span class="dot d0"></span><div><b>TAM</b> · US$360 M<small>Formación digital AEC LATAM</small></div></div><div class="tss-leg reveal"><span class="dot d1"></span><div><b>SAM</b> · US$87.5 M<small>Mercado servible</small></div></div><div class="tss-leg reveal"><span class="dot d2"></span><div><b>SOM 3 años</b> · US$2.5 M<small>Meta · menos del 3% del SAM</small></div></div></div></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Mercado</span><span class="foot-n">09<i>/</i>21</span></div></section>
+        <div class="ring r0" data-tip="TAM · US$360 M"><span>TAM</span></div>
+        <div class="ring r1" data-tip="SAM · US$87.5 M"><span>SAM</span></div>
+        <div class="ring r2" data-tip="SOM 3 años · US$2.5 M"><span>SOM</span></div></div>
+      <div class="tss-legend"><div class="tss-leg reveal" data-tip="TAM · US$360 M"><span class="dot d0"></span><div><b>TAM</b> · US$360 M<small>Formación digital AEC LATAM</small></div></div><div class="tss-leg reveal" data-tip="SAM · US$87.5 M"><span class="dot d1"></span><div><b>SAM</b> · US$87.5 M<small>Mercado servible</small></div></div><div class="tss-leg reveal" data-tip="SOM 3 años · US$2.5 M"><span class="dot d2"></span><div><b>SOM 3 años</b> · US$2.5 M<small>Meta · menos del 3% del SAM</small></div></div></div></div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">09<i>/</i>21</span></div></section>
 <section class="slide" data-base="dark" data-ch="Modelo B2C2B" data-notes="Nuestro modelo empieza con el profesional. Construimos comunidad, confianza y adopción con personas que ya quieren mejorar su trabajo. Cuando esos profesionales aplican lo aprendido, la empresa ve valor y puede escalarlo a equipos completos. Así pasamos de adquisición individual a expansión empresarial." data-idx="9"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">10 · Modelo B2C2B</div>
   <blockquote class="bigquote reveal">Profesional adopta.<br>Empresa escala.<br><span class="grad">Proyecto mejora.</span></blockquote>
   <div class="flow reveal"><div class="flow-step hot">B2C</div><i class="flow-arr">→</i><div class="flow-step ">Equipos</div><i class="flow-arr">→</i><div class="flow-step hot">B2B</div><i class="flow-arr">→</i><div class="flow-step win">B2C2B</div></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Modelo B2C2B</span><span class="foot-n">10<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">10<i>/</i>21</span></div></section>
 <section class="slide" data-base="dark" data-ch="Modelo de negocio" data-notes="Tenemos tres motores. Live Training genera caja, comunidad y validación. B2B aporta contratos de mayor valor y expansión por cuenta. On-demand AI convierte el conocimiento validado en rutas digitales escalables, con mayor margen y menor costo marginal." data-idx="10"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">11 · Modelo de negocio</div>
   <blockquote class="bigquote reveal"><span class="grad">Live valida.<br>B2B ancla.<br>On-demand AI escala.</span></blockquote>
   <div class="chiprow reveal"><span class="chip2">Live Training: caja + comunidad</span><span class="chip2">B2B: ticket alto + recurrencia</span><span class="chip2">On-demand AI: margen + escala</span></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Modelo de negocio</span><span class="foot-n">11<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">11<i>/</i>21</span></div></section>
 <section class="slide" data-base="light" data-ch="Tracción" data-notes="En 2024 vendimos 30 mil dólares. En 2025 crecimos a 120 mil dólares, cuatro veces más. Para 2026 proyectamos 220 mil dólares. La tracción muestra que el mercado ya paga por esta necesidad." data-idx="11"><div class="slide-inner layout-chart">
-  <div class="kicker reveal">12 · Tracción</div>
   <h2 class="s-title reveal">El mercado <span class="grad">ya paga</span> por esta necesidad</h2>
-  <div class="barchart reveal"><div class="bar bar-ink"><div class="bar-top"><span>2024 · validación</span><b>US$30K</b></div><div class="bar-track"><i style="--w:13.6%"></i></div></div><div class="bar bar-violet"><div class="bar-top"><span>2025 · ×4 crecimiento</span><b>US$120K</b></div><div class="bar-track"><i style="--w:54.5%"></i></div></div><div class="bar bar-green"><div class="bar-top"><span>2026E · expansión</span><b>US$220K</b></div><div class="bar-track"><i style="--w:100.0%"></i></div></div></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Tracción</span><span class="foot-n">12<i>/</i>21</span></div></section>
-<section class="slide" data-base="dark" data-ch="Comunidad y validación" data-notes="No partimos desde cero. Tenemos una comunidad de más de 95 mil profesionales, presencia en 14 países, más de 100 alianzas y más de 200 expertos conectados al ecosistema. Además, ya tenemos más de 12 clientes B2B y 15% de ventas internacionales." data-idx="12"><div class="slide-inner layout-chart">
-  <div class="kicker reveal">13 · Comunidad y validación</div>
+  <div class="barchart reveal"><div class="bar bar-ink" data-tip="2024 · validación · US$30K"><div class="bar-top"><span>2024 · validación</span><b>US$30K</b></div><div class="bar-track"><i style="--w:13.6%"></i></div></div><div class="bar bar-violet" data-tip="2025 · ×4 crecimiento · US$120K"><div class="bar-top"><span>2025 · ×4 crecimiento</span><b>US$120K</b></div><div class="bar-track"><i style="--w:54.5%"></i></div></div><div class="bar bar-green" data-tip="2026E · expansión · US$220K"><div class="bar-top"><span>2026E · expansión</span><b>US$220K</b></div><div class="bar-track"><i style="--w:100.0%"></i></div></div></div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">12<i>/</i>21</span></div></section>
+<section class="slide" data-base="dark" data-ch="Comunidad y validación" data-notes="No partimos desde cero. Tenemos una comunidad de más de 95 mil profesionales, presencia en 14 países, más de 100 alianzas y más de 200 expertos conectados al ecosistema. Además, ya tenemos más de 12 clientes B2B y 15% de ventas internacionales." data-idx="12"><div class="slide-inner layout-statement">
   <h2 class="s-title reveal">No partimos <span class="grad">desde cero</span></h2>
-  <div class="statrow">
-    <div class="stat reveal stat-blue"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="95">95</span><span class="stat-suf">K+</span></div><div class="stat-label">Comunidad</div><div class="stat-sub">8k WhatsApp activo</div></div>
-    <div class="stat reveal stat-violet"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="14">14</span><span class="stat-suf"></span></div><div class="stat-label">Países</div><div class="stat-sub">alcance regional</div></div>
-    <div class="stat reveal stat-green"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="200">200</span><span class="stat-suf">+</span></div><div class="stat-label">Expertos conectados</div><div class="stat-sub">ecosistema AEC</div></div>
-    <div class="stat reveal stat-violet"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="12">12</span><span class="stat-suf">+</span></div><div class="stat-label">Clientes B2B</div><div class="stat-sub">tracción enterprise</div></div>
+  <div class="statrow bare">
+    <div class="stat reveal stat-blue"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="95">95</span><span class="stat-suf">K+</span></div><div class="stat-label">Comunidad</div></div>
+    <div class="stat reveal stat-violet"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="14">14</span><span class="stat-suf"></span></div><div class="stat-label">Países</div></div>
+    <div class="stat reveal stat-green"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="200">200</span><span class="stat-suf">+</span></div><div class="stat-label">Expertos</div></div>
+    <div class="stat reveal stat-violet"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="12">12</span><span class="stat-suf">+</span></div><div class="stat-label">Clientes B2B</div></div>
   </div>
   <div class="chiprow reveal"><span class="chip2">+100 alianzas</span><span class="chip2">15% ventas internacionales</span></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Comunidad y validación</span><span class="foot-n">13<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">13<i>/</i>21</span></div></section>
 <section class="slide" data-base="light" data-ch="Go To Market" data-notes="Nuestro go-to-market parte de comunidad y contenido especializado. Atraemos profesionales, los llevamos a diagnóstico, activamos con programas live, convertimos lo validado en microlearning y escalamos hacia empresas. El B2C nos da entrada. El B2B nos da expansión." data-idx="13"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">14 · Go To Market</div>
   <h2 class="s-title reveal">El B2C da entrada. El <span class="grad">B2B da expansión</span>.</h2>
   <div class="flow reveal"><div class="flow-step hot">Comunidad</div><i class="flow-arr">→</i><div class="flow-step ">Diagnóstico</div><i class="flow-arr">→</i><div class="flow-step ">Live</div><i class="flow-arr">→</i><div class="flow-step ">On-demand</div><i class="flow-arr">→</i><div class="flow-step win">B2B</div></div>
   <div class="chiprow reveal"><span class="chip2">CAC bajo</span><span class="chip2">NPS alto</span><span class="chip2">Expansión por cuenta</span></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Go To Market</span><span class="foot-n">14<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">14<i>/</i>21</span></div></section>
 <section class="slide" data-base="light" data-ch="NSM" data-notes="Medimos dos cosas. En producto, no queremos solo usuarios viendo videos. Queremos prácticas aplicadas completadas. En negocio, queremos que cada vez más revenue venga de B2B y On-demand AI, porque ahí está la escalabilidad." data-idx="14"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">15 · NSM</div>
   <h2 class="s-title reveal">Medimos <span class="grad">adopción real</span></h2>
   <div class="chiprow reveal"><span class="chip2">Producto: prácticas aplicadas / mes</span><span class="chip2">Negocio: % revenue B2B + On-demand AI</span></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">NSM</span><span class="foot-n">15<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">15<i>/</i>21</span></div></section>
 <section class="slide" data-base="dark" data-ch="Diferenciación" data-notes="Las plataformas horizontales venden contenido. AECODE compite desde la profundidad vertical. Tenemos comunidad AEC, expertos, rutas por rol, prácticas aplicadas, IA sectorial y un modelo que conecta aprendizaje con productividad." data-idx="15"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">16 · Diferenciación</div>
   <blockquote class="bigquote reveal">No competimos por más cursos.<br>Competimos por <span class="grad">adopción tecnológica</span>.</blockquote>
   <div class="chiprow reveal"><span class="chip2">Vertical AEC</span><span class="chip2">Rutas por rol</span><span class="chip2">IA sectorial</span><span class="chip2">+200 expertos</span><span class="chip2">Comunidad</span></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Diferenciación</span><span class="foot-n">16<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">16<i>/</i>21</span></div></section>
 <section class="slide" data-base="light" data-ch="Roadmap" data-notes="En 2024 validamos comunidad y programas en vivo. En 2025 hicimos nuestro primer piloto B2B y crecimos cuatro veces. En 2026 lanzamos microlearning e IA aplicada, empezando con programas como IA para ingeniería civil. En 2027 buscamos expansión regional, apoyados en eventos, alianzas y programas como AI Talent." data-idx="16"><div class="slide-inner layout-timeline">
-  <div class="kicker reveal">17 · Roadmap</div>
   <h2 class="s-title reveal">De operación validada a <span class="grad">plataforma regional</span></h2>
   <div class="tl reveal">
     <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2024</div><div class="tl-what"><b>Live</b> + comunidad.</div></div>
@@ -330,33 +325,34 @@ body.mobile .notes{max-height:55vh}
     <div class="tl-item"><div class="tl-dot"></div><div class="tl-when">2026</div><div class="tl-what"><b>Microlearning + IA</b>.</div></div>
     <div class="tl-item win"><div class="tl-dot"></div><div class="tl-when">2027</div><div class="tl-what"><b>LATAM</b> + AI Talent.</div></div>
   </div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Roadmap</span><span class="foot-n">17<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">17<i>/</i>21</span></div></section>
 <section class="slide" data-base="light" data-ch="Escalabilidad" data-notes="La clave es cambiar el mix. Hoy Live valida y genera caja. Pero cada programa validado se convierte en cápsulas, rutas, prácticas y activos digitales reutilizables. Así crece el margen, la recurrencia y la capacidad de escalar sin depender solo de horas humanas." data-idx="17"><div class="slide-inner layout-chart">
-  <div class="kicker reveal">18 · Escalabilidad</div>
   <h2 class="s-title reveal">Mismo conocimiento. Más usuarios. <span class="grad">Menor costo marginal.</span></h2>
-  <div class="stackbar reveal"><div class="sb-cols"><div class="sb-col"><div class="sb-bar" style="height:7.1%"><span class="sb-seg" style="height:100.00%;background:#4465EE"></span><span class="sb-seg" style="height:0.00%;background:#17B14E"></span><span class="sb-seg" style="height:0.00%;background:#6D70F9"></span></div><div class="sb-tot">100% Live</div><div class="sb-lab">2024</div></div><div class="sb-col"><div class="sb-bar" style="height:52.4%"><span class="sb-seg" style="height:60.00%;background:#4465EE"></span><span class="sb-seg" style="height:25.00%;background:#17B14E"></span><span class="sb-seg" style="height:15.00%;background:#6D70F9"></span></div><div class="sb-tot">40% escalable</div><div class="sb-lab">2026E</div></div><div class="sb-col"><div class="sb-bar" style="height:100.0%"><span class="sb-seg" style="height:38.10%;background:#4465EE"></span><span class="sb-seg" style="height:33.33%;background:#17B14E"></span><span class="sb-seg" style="height:28.57%;background:#6D70F9"></span></div><div class="sb-tot">62% escalable</div><div class="sb-lab">2027 Target</div></div></div><div class="sb-legend"><span class="sb-leg"><i style="background:#4465EE"></i>B2C Live</span><span class="sb-leg"><i style="background:#17B14E"></i>B2B</span><span class="sb-leg"><i style="background:#6D70F9"></i>On-demand AI</span></div></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Escalabilidad</span><span class="foot-n">18<i>/</i>21</span></div></section>
+  <div class="stackbar reveal"><div class="sb-cols"><div class="sb-col"><div class="sb-bar" style="height:7.1%"><span class="sb-seg" data-tip="B2C Live · US$30K · 100%" style="height:100.00%;background:#4465EE"></span><span class="sb-seg" data-tip="B2B · US$0K · 0%" style="height:0.00%;background:#17B14E"></span><span class="sb-seg" data-tip="On-demand AI · US$0K · 0%" style="height:0.00%;background:#6D70F9"></span></div><div class="sb-tot">100% Live</div><div class="sb-lab">2024</div></div><div class="sb-col"><div class="sb-bar" style="height:52.4%"><span class="sb-seg" data-tip="B2C Live · US$132K · 60%" style="height:60.00%;background:#4465EE"></span><span class="sb-seg" data-tip="B2B · US$55K · 25%" style="height:25.00%;background:#17B14E"></span><span class="sb-seg" data-tip="On-demand AI · US$33K · 15%" style="height:15.00%;background:#6D70F9"></span></div><div class="sb-tot">40% escalable</div><div class="sb-lab">2026E</div></div><div class="sb-col"><div class="sb-bar" style="height:100.0%"><span class="sb-seg" data-tip="B2C Live · US$160K · 38%" style="height:38.10%;background:#4465EE"></span><span class="sb-seg" data-tip="B2B · US$140K · 33%" style="height:33.33%;background:#17B14E"></span><span class="sb-seg" data-tip="On-demand AI · US$120K · 29%" style="height:28.57%;background:#6D70F9"></span></div><div class="sb-tot">62% escalable</div><div class="sb-lab">2027 Target</div></div></div><div class="sb-legend"><span class="sb-leg"><i style="background:#4465EE"></i>B2C Live</span><span class="sb-leg"><i style="background:#17B14E"></i>B2B</span><span class="sb-leg"><i style="background:#6D70F9"></i>On-demand AI</span></div></div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">18<i>/</i>21</span></div></section>
 <section class="slide" data-base="dark" data-ch="Equipo" data-notes="Tenemos un equipo multidisciplinario de más de 12 personas. Cubrimos producto, desarrollo, sistemas, data, IA, comercial, growth, coordinación académica, administración y finanzas. No es un equipo que recién va a validar. Es el equipo que ya construyó comunidad, vendió y creció." data-idx="18"><div class="slide-inner layout-statement">
-  <div class="kicker reveal">19 · Equipo</div>
   <h2 class="s-title reveal">Equipo completo para <span class="grad">construir, vender y escalar</span></h2>
-  <div class="stat reveal stat-green"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="12">12</span><span class="stat-suf">+</span></div><div class="stat-label">Personas · equipo multidisciplinario</div></div>
+  <div class="statrow bare" style="grid-template-columns:auto">
+    <div class="stat reveal stat-green"><div class="stat-num"><span class="stat-pre"></span><span class="stat-val" data-count="12">12</span><span class="stat-suf">+</span></div><div class="stat-label">Personas · equipo multidisciplinario</div></div>
+  </div>
   <div class="chiprow reveal"><span class="chip2">Producto</span><span class="chip2">Tech</span><span class="chip2">IA</span><span class="chip2">Comercial</span><span class="chip2">Growth</span><span class="chip2">Académico</span><span class="chip2">Finanzas</span></div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Equipo</span><span class="foot-n">19<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">19<i>/</i>21</span></div></section>
 <section class="slide" data-base="dark" data-ch="Ask" data-notes="Buscamos 125 mil dólares. El 60% irá a IA y plataforma. El 30% a growth B2C2B y expansión LATAM. El 10% a producción de microlearning. El capital no financia una idea. Financia la conversión de una operación validada en una plataforma escalable." data-idx="19"><div class="slide-inner layout-ask">
-  <div class="kicker reveal">20 · Ask</div>
   <h2 class="s-title reveal">US$125K para <span class="grad">escalar lo validado</span></h2>
   <div class="ask-grid reveal">
-    <div class="ask-left"><div class="donut-wrap reveal"><div class="donut" style="background:conic-gradient(#6D70F9 0% 60%,#17B14E 60% 90%,#4465EE 90% 100%)"><div class="donut-hole"></div></div>
-      <div class="donut-legend"><div class="dn-leg reveal"><span style="background:#6D70F9"></span><b>60%</b> IA + plataforma</div><div class="dn-leg reveal"><span style="background:#17B14E"></span><b>30%</b> Growth B2C2B / LATAM</div><div class="dn-leg reveal"><span style="background:#4465EE"></span><b>10%</b> Microlearning</div></div></div></div>
+    <div class="ask-left"><div class="donut-wrap reveal">
+      <div class="donut-svg"><svg viewBox="0 0 120 120"><g transform="rotate(-90 60 60)"><circle class="dn-arc" r="52" cx="60" cy="60" fill="none" stroke="#6D70F9" stroke-width="15" stroke-dasharray="196.04 130.69" stroke-dashoffset="0.00" data-tip="IA + plataforma · 60%" data-lab="IA + plataforma" data-pct="60"></circle><circle class="dn-arc" r="52" cx="60" cy="60" fill="none" stroke="#17B14E" stroke-width="15" stroke-dasharray="98.02 228.71" stroke-dashoffset="-196.04" data-tip="Growth B2C2B / LATAM · 30%" data-lab="Growth B2C2B / LATAM" data-pct="30"></circle><circle class="dn-arc" r="52" cx="60" cy="60" fill="none" stroke="#4465EE" stroke-width="15" stroke-dasharray="32.67 294.05" stroke-dashoffset="-294.05" data-tip="Microlearning · 10%" data-lab="Microlearning" data-pct="10"></circle></g></svg>
+        <div class="dn-center"><b class="dn-c-pct">60%</b><span class="dn-c-lab">IA + plataforma</span></div></div>
+      <div class="donut-legend"><div class="dn-leg reveal" data-tip="IA + plataforma · 60%"><span style="background:#6D70F9"></span><b>60%</b> IA + plataforma</div><div class="dn-leg reveal" data-tip="Growth B2C2B / LATAM · 30%"><span style="background:#17B14E"></span><b>30%</b> Growth B2C2B / LATAM</div><div class="dn-leg reveal" data-tip="Microlearning · 10%"><span style="background:#4465EE"></span><b>10%</b> Microlearning</div></div></div></div>
     <div class="ask-right"><ul class="bullets"><li class="reveal"><b>60%</b> — IA + plataforma</li><li class="reveal"><b>30%</b> — growth B2C2B / LATAM</li><li class="reveal"><b>10%</b> — microlearning</li></ul></div>
   </div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Ask</span><span class="foot-n">20<i>/</i>21</span></div></section>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">20<i>/</i>21</span></div></section>
 <section class="slide" data-base="dark" data-ch="Cierre" data-notes="La construcción no se transforma solo con más herramientas ni más cursos. Se transforma cuando su gente aprende a aplicar tecnología en el trabajo real. AECODE existe para acelerar esa adopción tecnológica en construcción. Aprende, aplica, construye mejor." data-idx="20"><div class="slide-inner layout-close">
   <div class="cover-logo reveal"><img class="logo-dark" src="brand/assets/logos/aecode-logo-principal-fondo-oscuro.png" alt="AECODE"><img class="logo-light" src="brand/assets/logos/aecode-logo-principal-fondo-blanco.png" alt="AECODE"></div>
   <div class="close-cta reveal">Aprende · Aplica · <span class="grad">Construye mejor</span></div>
   <div class="close-mail reveal">apalpan@genplusdesign.com · AECODE</div>
-</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-ch">Cierre</span><span class="foot-n">21<i>/</i>21</span></div></section></div></div>
-<div class="chrome"><div class="segbar" id="segbar"></div><div class="counter">01 / 21</div>
+</div><img class="slide-mark" src="brand/assets/logos/aecode_isotipo_principal.png" alt=""><div class="slide-foot"><span class="foot-n">21<i>/</i>21</span></div></section></div></div>
+<div class="chrome"><div class="segbar" id="segbar"></div>
 <div class="ctrl">
 <button id="btn-toc" title="Índice (O)" aria-label="Índice">☰</button>
 <button id="btn-notes" title="Guion (N)" aria-label="Guion">✎</button>
@@ -367,12 +363,13 @@ body.mobile .notes{max-height:55vh}
 <button id="btn-fs" title="Pantalla completa (F)" aria-label="Pantalla completa">⛶</button>
 </div></div>
 <div class="arrow-zone left"></div><div class="arrow-zone right"></div>
+<div class="tip" id="tip"></div>
 <div class="notes" id="notes"><div class="notes-h">Guion del orador <span id="notes-n"></span></div><p id="notes-body"></p></div>
 <div class="toc"><button class="toc-close" aria-label="Cerrar">✕</button>
 <h3>Índice · 21 slides</h3><div class="toc-grid"><button class="toc-item" data-go="0"><span class="toc-n">01</span><span class="toc-t">Hook</span></button><button class="toc-item" data-go="1"><span class="toc-n">02</span><span class="toc-t">Oportunidad</span></button><button class="toc-item" data-go="2"><span class="toc-n">03</span><span class="toc-t">Por qué ahora</span></button><button class="toc-item" data-go="3"><span class="toc-n">04</span><span class="toc-t">Problema central</span></button><button class="toc-item" data-go="4"><span class="toc-n">05</span><span class="toc-t">Dolor real</span></button><button class="toc-item" data-go="5"><span class="toc-n">06</span><span class="toc-t">Solución</span></button><button class="toc-item" data-go="6"><span class="toc-n">07</span><span class="toc-t">Producto / Video Demo</span></button><button class="toc-item" data-go="7"><span class="toc-n">08</span><span class="toc-t">Innovación tecnológica</span></button><button class="toc-item" data-go="8"><span class="toc-n">09</span><span class="toc-t">Mercado</span></button><button class="toc-item" data-go="9"><span class="toc-n">10</span><span class="toc-t">Modelo B2C2B</span></button><button class="toc-item" data-go="10"><span class="toc-n">11</span><span class="toc-t">Modelo de negocio</span></button><button class="toc-item" data-go="11"><span class="toc-n">12</span><span class="toc-t">Tracción</span></button><button class="toc-item" data-go="12"><span class="toc-n">13</span><span class="toc-t">Comunidad y validación</span></button><button class="toc-item" data-go="13"><span class="toc-n">14</span><span class="toc-t">Go To Market</span></button><button class="toc-item" data-go="14"><span class="toc-n">15</span><span class="toc-t">NSM</span></button><button class="toc-item" data-go="15"><span class="toc-n">16</span><span class="toc-t">Diferenciación</span></button><button class="toc-item" data-go="16"><span class="toc-n">17</span><span class="toc-t">Roadmap</span></button><button class="toc-item" data-go="17"><span class="toc-n">18</span><span class="toc-t">Escalabilidad</span></button><button class="toc-item" data-go="18"><span class="toc-n">19</span><span class="toc-t">Equipo</span></button><button class="toc-item" data-go="19"><span class="toc-n">20</span><span class="toc-t">Ask</span></button><button class="toc-item" data-go="20"><span class="toc-n">21</span><span class="toc-t">Cierre</span></button></div></div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];const total=slides.length;let cur=0;
-const stage=document.querySelector('.stage'),counter=document.querySelector('.counter'),segbar=document.querySelector('#segbar');
+const stage=document.querySelector('.stage'),segbar=document.querySelector('#segbar'),tip=document.querySelector('#tip');
 const notes=document.querySelector('#notes'),notesBody=document.querySelector('#notes-body'),notesN=document.querySelector('#notes-n');
 let mode=localStorage.getItem('aecode-pitch-mode')||'mix';
 const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -391,19 +388,18 @@ function isMobile(){return matchMedia('(max-width:820px),(orientation:portrait) 
 function fit(){if(isMobile()){document.body.classList.add('mobile');stage.style.transform='none';}
   else{document.body.classList.remove('mobile');stage.style.transform='scale('+Math.min(innerWidth/1280,innerHeight/720)+')';}}
 function countUp(s){s.querySelectorAll('[data-count]').forEach(el=>{const t=parseFloat(el.dataset.count);
-  if(isNaN(t))return;const dec=(el.dataset.count.split('.')[1]||'').length,d=850,t0=performance.now();
+  if(isNaN(t))return;const dec=(el.dataset.count.split('.')[1]||'').length,d=900,t0=performance.now();
   (function st(n){const p=Math.min((n-t0)/d,1),e=1-Math.pow(1-p,3);el.textContent=(t*e).toFixed(dec);
   p<1?requestAnimationFrame(st):el.textContent=t.toFixed(dec);})(t0);});}
 function updateNotes(){notesBody.textContent=slides[cur].dataset.notes||'';notesN.textContent=(cur+1)+' / '+total;}
 function go(n){n=Math.max(0,Math.min(total-1,n));if(n===cur&&slides[cur].classList.contains('active')){countUp(slides[cur]);return}
   const dir=n>cur?1:-1,mob=document.body.classList.contains('mobile');
   const out=slides[cur];out.classList.remove('active');
-  if(!reduced&&!mob)out.style.transform='translateX('+(-dir*34)+'px)';
+  if(!reduced&&!mob)out.style.transform='translateX('+(-dir*36)+'px)';
   cur=n;const s=slides[cur];
-  if(!reduced&&!mob){s.style.transition='none';s.style.transform='translateX('+(dir*34)+'px)';void s.offsetWidth;s.style.transition='';}
+  if(!reduced&&!mob){s.style.transition='none';s.style.transform='translateX('+(dir*36)+'px)';void s.offsetWidth;s.style.transition='';}
   s.classList.add('active');s.style.transform='';if(mob)s.scrollTop=0;
-  [...s.querySelectorAll('.reveal')].forEach((el,i)=>el.style.transitionDelay=(reduced?0:Math.min(i*48,560))+'ms');
-  counter.textContent=String(cur+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
+  [...s.querySelectorAll('.reveal')].forEach((el,i)=>el.style.transitionDelay=(reduced?0:Math.min(i*52,600))+'ms');
   updateSeg();updateNotes();if(!reduced)countUp(s);location.hash=cur+1;}
 function next(){go(cur+1)}function prev(){go(cur-1)}
 addEventListener('keydown',e=>{const k=e.key.toLowerCase();
@@ -416,6 +412,11 @@ let wlock=false;
 addEventListener('wheel',e=>{if(document.body.classList.contains('mobile')||wlock)return;
   const d=Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;if(Math.abs(d)<26)return;
   wlock=true;setTimeout(()=>wlock=false,720);stopPlay();d>0?next():prev();},{passive:true});
+// tooltips + donut center
+addEventListener('mouseover',e=>{const t=e.target.closest('[data-tip]');if(t){tip.textContent=t.dataset.tip;tip.classList.add('show');}
+  const a=e.target.closest('.dn-arc');if(a){const w=a.closest('.donut-wrap');w.querySelector('.dn-c-pct').textContent=a.dataset.pct+'%';w.querySelector('.dn-c-lab').textContent=a.dataset.lab;}});
+addEventListener('mousemove',e=>{if(tip.classList.contains('show')){tip.style.left=e.clientX+'px';tip.style.top=(e.clientY-16)+'px';}});
+addEventListener('mouseout',e=>{if(e.target.closest('[data-tip]'))tip.classList.remove('show');});
 function cycleMode(){mode=mode==='mix'?'dark':mode==='dark'?'light':'mix';localStorage.setItem('aecode-pitch-mode',mode);
   applyTheme();document.querySelector('#mode-ico').textContent=mode==='mix'?'◐':mode==='dark'?'●':'○';}
 function toggleFs(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
