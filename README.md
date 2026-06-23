@@ -37,7 +37,7 @@ python build_pitch.py
 
 Hook · Oportunidad (+280M / 92%) · Por qué ahora · Problema central · Dolor real ·
 Solución · Producto/Video Demo · Innovación tecnológica (AI Coach multiagente) · Mercado ·
-Modelo B2C2B · Modelo de negocio · Tracción · Comunidad y validación · Go To Market · NSM ·
+Modelo B2B2C · Modelo de negocio · Tracción · Comunidad y validación · Go To Market · NSM ·
 Diferenciación · Roadmap · Escalabilidad · Equipo · Ask · Cierre.
 
 Cada slide queda con titular + un elemento visual; el detalle vive en el **guion** (tecla `N`).

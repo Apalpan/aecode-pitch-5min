@@ -250,8 +250,8 @@ S("light","Mercado","tss",f"""
 """,
 "Nuestro mercado inicial es la formación digital especializada para construcción en Latinoamérica. Estimamos un TAM de 360 millones de dólares, un SAM de 87.5 millones y una meta de capturar 2.5 millones en tres años. Eso representa menos del 3% del mercado servible.")
 
-# 10 MODELO B2C2B — culmina en B2C2B
-S("dark","Modelo B2C2B","b2c2b",f"""
+# 10 MODELO B2B2C — culmina en B2B2C
+S("dark","Modelo B2B2C","b2c2b",f"""
   {title('Profesional adopta. Empresa escala. <span class="grad">Proyecto mejora.</span>')}
   <div class="b2flow reveal">
     <div class="b2step"><span class="b2n">1</span><b>B2C</b><small>El profesional adopta</small></div>
@@ -260,11 +260,11 @@ S("dark","Modelo B2C2B","b2c2b",f"""
     <i class="b2arr">→</i>
     <div class="b2step"><span class="b2n">3</span><b>B2B</b><small>La empresa escala</small></div>
     <i class="b2arr">→</i>
-    <div class="b2step b2win"><b>B2C2B</b><small>Proyecto mejora · todo el enfoque</small></div>
+    <div class="b2step b2win"><b>B2B2C</b><small>Proyecto mejora · todo el enfoque</small></div>
   </div>
   {lead('Empezamos con el profesional y construimos adopción. Cuando aplica lo aprendido, la empresa ve valor y lo escala a equipos. Así pasamos de <b>adquisición individual a expansión empresarial</b> — y a mejores proyectos.')}
 """,
-"Nuestro modelo empieza con el profesional. Construimos comunidad, confianza y adopción con personas que ya quieren mejorar su trabajo. Cuando esos profesionales aplican lo aprendido, la empresa ve valor y puede escalarlo a equipos completos. Así pasamos de adquisición individual a expansión empresarial y, finalmente, a mejores proyectos. El B2C2B es todo el enfoque.")
+"Nuestro modelo empieza con el profesional. Construimos comunidad, confianza y adopción con personas que ya quieren mejorar su trabajo. Cuando esos profesionales aplican lo aprendido, la empresa ve valor y puede escalarlo a equipos completos. Así pasamos de adquisición individual a expansión empresarial y, finalmente, a mejores proyectos. El B2B2C es todo el enfoque.")
 
 # 11 MODELO DE NEGOCIO — Live · B2B · On-demand AI
 S("dark","Modelo de negocio","blocks",f"""
@@ -400,14 +400,14 @@ S("dark","Equipo","team",f"""
 S("dark","Ask","ask",f"""
   {title('US$125K para <span class="grad">escalar lo validado</span>')}
   <div class="ask-grid reveal">
-    <div class="ask-left">{donut([("IA + plataforma",60,"#6D70F9"),("Growth B2C2B / LATAM",30,"#17B14E"),("Microlearning on-demand",10,"#4465EE")])}</div>
+    <div class="ask-left">{donut([("IA + plataforma",60,"#6D70F9"),("Growth B2B2C / LATAM",30,"#17B14E"),("Microlearning on-demand",10,"#4465EE")])}</div>
     <div class="ask-right">
-      {bullets(["<b>60%</b> — IA + plataforma","<b>30%</b> — growth B2C2B + expansión LATAM","<b>10%</b> — microlearning on-demand"])}
+      {bullets(["<b>60%</b> — IA + plataforma","<b>30%</b> — growth B2B2C + expansión LATAM","<b>10%</b> — microlearning on-demand"])}
       <div class="ask-note reveal">El capital no financia una idea: financia convertir una operación validada en una <b>plataforma escalable</b>.</div>
     </div>
   </div>
 """,
-"Buscamos 125 mil dólares. El 60% irá a IA y plataforma. El 30% a growth B2C2B y expansión LATAM. El 10% a producción de contenido microlearning y on-demand. El capital no financia una idea. Financia la conversión de una operación validada en una plataforma escalable.")
+"Buscamos 125 mil dólares. El 60% irá a IA y plataforma. El 30% a growth B2B2C y expansión LATAM. El 10% a producción de contenido microlearning y on-demand. El capital no financia una idea. Financia la conversión de una operación validada en una plataforma escalable.")
 
 # 21 CIERRE — QR (sin correo)
 S("dark","Cierre","close",f"""
